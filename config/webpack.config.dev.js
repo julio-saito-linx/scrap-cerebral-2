@@ -80,7 +80,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      'cerebral': cerebralPath,
+      // 'cerebral': cerebralPath,
     }
   },
   
@@ -98,7 +98,8 @@ module.exports = {
       // Process JS with Babel.
       {
         test: /\.(js|jsx)$/,
-        include: [paths.appSrc, cerebralPath],
+        include: [paths.appSrc],
+        // include: [paths.appSrc, cerebralPath],
         loader: require.resolve('babel-loader'),
         query: {
           

@@ -1,9 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/app/App';
-import './main.css';
 import { Controller } from 'cerebral';
-import { Container } from 'cerebral/react';
 import Devtools from 'cerebral/devtools';
 import {set} from 'cerebral/operators';
 
@@ -22,9 +17,4 @@ const controller = Controller({
   }
 });
 
-ReactDOM.render(
-  <Container controller={controller}>
-    <App />
-  </Container>,
-  document.getElementById('root')
-);
+export default controller;

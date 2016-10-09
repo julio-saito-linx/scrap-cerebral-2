@@ -84,7 +84,7 @@
     "extends": "react-app"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
-  "main": "index.js",
+  "main": "./src/main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saitodisse/scrap-cerebral-2.git"
