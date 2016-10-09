@@ -16,19 +16,27 @@ export default connect(
       return (
         <div className="App">
           <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo"/>
             <h2>Cerebral 2</h2>
+            <img src={logo} className="App-logo" alt="logo"/>
           </div>
           <p className="App-intro">
             Edit <code>./src/components/app/App.js</code> and save to reload.
           </p>
-          <input type="text" value={this.props.text}
-                 onChange={(event) => this.props.textChanged({
-                   text: event.target.value
-                 })}/>
-          <button onClick={() => this.props.buttonClicked()}>
-            Clear
-          </button>
+          <div className="App-inputs">
+            <input
+              className="textValue"
+              type="text"
+              value={this.props.text}
+              onChange={(event) => this.props.textChanged({
+                text: event.target.value
+              })}/>
+            <button
+              className="clearButton"
+              onClick={() => this.props.buttonClicked()}
+            >
+              Clear
+            </button>
+          </div>
         </div>
       );
     }
