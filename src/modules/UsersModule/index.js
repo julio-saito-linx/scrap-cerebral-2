@@ -72,9 +72,9 @@ export default function UsersModule(module) {
         },
         set('state:users.user_id', 'input:user_id'),
       ],
-      usersChildAdded: [ firebase_merge_item('members.usersList') ],
-      usersChildChanged: [ firebase_merge_item('members.usersList') ],
-      usersChildRemoved: [ firebase_remove_item('members.usersList') ],
+      usersChildAdded: [ firebase_merge_item('users.list') ],
+      usersChildChanged: [ firebase_merge_item('users.list') ],
+      usersChildRemoved: [ firebase_remove_item('users.list') ],
     },
   }
 }

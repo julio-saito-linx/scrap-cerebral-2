@@ -4,7 +4,7 @@ import './index.css';
 
 export default connect({
     user_id: `users.user_id`,
-    users: `users.list`,
+    users: `users.list.*`,
     is_loading: 'users.is_loading',
   },
   {},

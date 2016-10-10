@@ -1,11 +1,8 @@
 function firebase_merge_item(state_path) {
-  return function mergeItem({ state, path, input }) {
+  return function mergeItem({ state, input }) {
     const { key, value } = input;
-    const newItem = {};
-    newItem[ key ] = value;
-
-    state.merge(state_path, newItem);
-    path({ key });
+    state.set(`${state_path}.${key}`, value);
+    return { key };
   };
 }
 
