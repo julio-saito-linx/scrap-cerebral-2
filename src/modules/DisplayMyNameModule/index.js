@@ -17,6 +17,5 @@ export default (module) => {
         set('state:currentPage', 'display_my_name'),
       ],
     },
-    modules: {},
   }
 }

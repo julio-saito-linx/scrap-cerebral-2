@@ -20,7 +20,12 @@ function getClientEnvironment(publicUrl) {
       // For example, <img src={process.env.PUBLIC_URL + '/img/react_logo.png'} />.
       // This should only be used as an escape hatch. Normally you would put
       // images into the `src` and `import` them in code to get their paths.
-      'process.env.PUBLIC_URL': JSON.stringify(publicUrl)
+      'process.env.PUBLIC_URL': JSON.stringify(publicUrl),
+      // Firebase
+      'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY || ''),
+      'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN || ''),
+      'process.env.FIREBASE_DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL || ''),
+      'process.env.FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET || ''),
     });
 }
 

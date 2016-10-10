@@ -5,7 +5,7 @@ process.env.NODE_ENV = 'production';
 // if this file is missing. dotenv will never modify any environment variables
 // that have already been set.
 // https://github.com/motdotla/dotenv
-require('dotenv').config({silent: true});
+require('dotenv').config({ silent: true });
 
 var chalk = require('chalk');
 var fs = require('fs-extra');
@@ -21,7 +21,7 @@ var recursive = require('recursive-readdir');
 var stripAnsi = require('strip-ansi');
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+if (!checkRequiredFiles([ paths.appHtml, paths.appIndexJs ])) {
   process.exit(1);
 }
 
@@ -58,7 +58,7 @@ recursive(paths.appBuild, (err, fileNames) => {
     .reduce((memo, fileName) => {
       var contents = fs.readFileSync(fileName);
       var key = removeFileNameHash(fileName);
-      memo[key] = gzipSize(contents);
+      memo[ key ] = gzipSize(contents);
       return memo;
     }, {});
 
@@ -80,7 +80,7 @@ function printFileSizes(stats, previousSizeMap) {
     .map(asset => {
       var fileContents = fs.readFileSync(paths.appBuild + '/' + asset.name);
       var size = gzipSize(fileContents);
-      var previousSize = previousSizeMap[removeFileNameHash(asset.name)];
+      var previousSize = previousSizeMap[ removeFileNameHash(asset.name) ];
       var difference = getDifferenceLabel(size, previousSize);
       return {
         folder: path.join('build', path.dirname(asset.name)),
@@ -131,7 +131,7 @@ function build(previousSizeMap) {
     if (homepagePath && homepagePath.indexOf('.github.io/') !== -1) {
       // "homepage": "http://user.github.io/project"
       console.log('The project was built assuming it is hosted at ' + chalk.green(publicPath) + '.');
-      console.log('You can control this with the ' + chalk.green('homepage') + ' field in your '  + chalk.cyan('package.json') + '.');
+      console.log('You can control this with the ' + chalk.green('homepage') + ' field in your ' + chalk.cyan('package.json') + '.');
       console.log();
       console.log('The ' + chalk.cyan('build') + ' folder is ready to be deployed.');
       console.log('To publish it at ' + chalk.green(homepagePath) + ', run:');
@@ -147,7 +147,7 @@ function build(previousSizeMap) {
     } else if (publicPath !== '/') {
       // "homepage": "http://mywebsite.com/project"
       console.log('The project was built assuming it is hosted at ' + chalk.green(publicPath) + '.');
-      console.log('You can control this with the ' + chalk.green('homepage') + ' field in your '  + chalk.cyan('package.json') + '.');
+      console.log('You can control this with the ' + chalk.green('homepage') + ' field in your ' + chalk.cyan('package.json') + '.');
       console.log();
       console.log('The ' + chalk.cyan('build') + ' folder is ready to be deployed.');
       console.log();
@@ -156,11 +156,11 @@ function build(previousSizeMap) {
       console.log('The project was built assuming it is hosted at the server root.');
       if (homepagePath) {
         // "homepage": "http://mywebsite.com"
-        console.log('You can control this with the ' + chalk.green('homepage') + ' field in your '  + chalk.cyan('package.json') + '.');
+        console.log('You can control this with the ' + chalk.green('homepage') + ' field in your ' + chalk.cyan('package.json') + '.');
         console.log();
       } else {
         // no homepage
-        console.log('To override this, specify the ' + chalk.green('homepage') + ' in your '  + chalk.cyan('package.json') + '.');
+        console.log('To override this, specify the ' + chalk.green('homepage') + ' in your ' + chalk.cyan('package.json') + '.');
         console.log('For example, add this to build it for GitHub Pages:')
         console.log();
         console.log('  ' + chalk.green('"homepage"') + chalk.cyan(': ') + chalk.green('"http://myname.github.io/myapp"') + chalk.cyan(','));
@@ -169,7 +169,7 @@ function build(previousSizeMap) {
       console.log('The ' + chalk.cyan('build') + ' folder is ready to be deployed.');
       console.log('You may also serve it locally with a static server:')
       console.log();
-      console.log('  ' + chalk.cyan('npm') +  ' install -g pushstate-server');
+      console.log('  ' + chalk.cyan('npm') + ' install -g pushstate-server');
       console.log('  ' + chalk.cyan('pushstate-server') + ' build');
       console.log('  ' + chalk.cyan(openCommand) + ' http://localhost:9000');
       console.log();

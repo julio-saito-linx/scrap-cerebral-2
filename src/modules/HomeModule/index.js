@@ -7,6 +7,5 @@ export default (module) => {
         set('state:currentPage', 'home'),
       ],
     },
-    modules: {},
   }
 }

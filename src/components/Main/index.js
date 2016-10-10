@@ -5,10 +5,12 @@ import react_logo from './assets/logo.svg';
 import './main.css';
 import Home from '../Home';
 import DisplayMyName from '../DisplayMyName/edit';
+import Users from '../Users';
 
 const pages = {
   home: Home,
-  display_my_name: DisplayMyName
+  display_my_name: DisplayMyName,
+  users: Users,
 };
 
 export default connect(
@@ -43,6 +45,9 @@ export default connect(
             </li>
             <li>
               {this._render_route_link('display_my_name', '/display_my_name')}
+            </li>
+            <li>
+              {this._render_route_link('users', '/users')}
             </li>
           </ul>
 
