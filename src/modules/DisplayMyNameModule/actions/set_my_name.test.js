@@ -4,7 +4,8 @@ describe('set_my_name', () => {
   it('should validate input', () => {
     const mockedContext = {
       state: {
-        set() {},
+        set() {
+        },
       },
       input: {
         value: undefined,
@@ -29,10 +30,10 @@ describe('set_my_name', () => {
 
     const result = set_my_name(mockedContext);
 
-    expect(mockStateSet.mock.calls[0][0]).toBe('display_my_name.my_name');
-    expect(mockStateSet.mock.calls[0][1]).toBe(EXPECTED_NAME);
+    expect(mockStateSet.mock.calls[ 0 ][ 0 ]).toBe('display_my_name.my_name');
+    expect(mockStateSet.mock.calls[ 0 ][ 1 ]).toBe(EXPECTED_NAME);
 
-    expect(result).toBe(true);
+    expect(result).toEqual({ success: true });
   });
 
 });

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../../logo.svg';
 import './edit.css';
 import { connect } from 'cerebral/react';
 
@@ -14,11 +13,8 @@ export default connect(
   class Edit extends Component {
     render() {
       return (
-        <div className="App">
-          <div className="App-header">
-            <h2>Cerebral 2</h2>
-            <img src={logo} className="App-logo" alt="logo"/>
-          </div>
+        <section className="main">
+          <h1>Display My Name</h1>
           <p className="App-intro">
             Edit <code>./src/components/app/App.js</code> and save to reload.
           </p>
@@ -38,7 +34,7 @@ export default connect(
               Clear
             </button>
           </div>
-        </div>
+        </section>
       );
     }
   }

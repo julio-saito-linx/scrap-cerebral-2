@@ -1,0 +1,94 @@
+.App {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: row;
+  background-color: #222222;
+  padding: 0 20px;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.header_init {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header_end {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.cerebral_logo {
+  animation: cerebral_logo_spin 3s cubic-bezier(0, 0, 0, 1.04);
+  height: 50px;
+  margin: 8px 20px 8px 0;
+}
+
+@keyframes cerebral_logo_spin {
+  from {
+    transform: rotate(0deg);
+    height: 10px;
+  }
+  to {
+    transform: rotate(720deg);
+    height: 50px;
+  }
+}
+
+.react_logo {
+  animation: react_logo_spin infinite 30s linear;
+  height: 40px;
+}
+
+@keyframes react_logo_spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 7px 0 0 0;
+}
+
+@media all and (max-width: 500px) {
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 7px 0 0 0;
+  }
+}
+
+.menu li {
+  list-style-type: none;
+}
+
+.menu li .selected_route {
+  font-weight: bold;
+}
+
+.separator {
+  border: 1px solid #673AB7;
+  width: 100%;
+}
+

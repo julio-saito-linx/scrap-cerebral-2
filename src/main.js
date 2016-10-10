@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Container } from 'cerebral/react';
-import App from './components/DisplayMyName/edit';
+import Main from './components/Main/index';
 import controller from './controller';
 import './main.css';
 
 ReactDOM.render(
   <Container controller={controller}>
-    <App />
+    <Main />
   </Container>,
   document.getElementById('root')
 );

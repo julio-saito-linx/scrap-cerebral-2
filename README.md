@@ -89,7 +89,7 @@ my-app/
     edit.test.js
     main.css
     main.js
-    logo.svg
+    react_logo.svg
 ```
 
 For the project to build, **these files must exist with exact filenames**:
@@ -310,13 +310,13 @@ Here is an example:
 
 ```js
 import React from 'react';
-import logo from './logo.png'; // Tell Webpack this JS file uses this image
+import react_logo from './react_logo.png'; // Tell Webpack this JS file uses this image
 
-console.log(logo); // /logo.84287d09.png
+console.log(react_logo); // /react_logo.84287d09.png
 
 function Header() {
   // Import result is the URL of your image
-  return <img src={logo} alt="Logo" />;
+  return <img src={react_logo} alt="Logo" />;
 }
 
 export default function Header;
@@ -328,7 +328,7 @@ This works in CSS too:
 
 ```css
 .Logo {
-  background-image: url(./logo.png);
+  background-image: url(./react_logo.png);
 }
 ```
 
@@ -370,7 +370,7 @@ render() {
   // Note: this is an escape hatch and should be used sparingly!
   // Normally we recommend using `import` for getting asset URLs
   // as described in “Adding Images and Fonts” above this section.
-  return <img src={process.env.PUBLIC_URL + '/img/logo.png'} />;
+  return <img src={process.env.PUBLIC_URL + '/img/react_logo.png'} />;
 }
 ```
 

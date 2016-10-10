@@ -1,27 +1,3 @@
-.App {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-}
-
-.App-header {
-  display: flex;
-  background-color: #222;
-  padding: 0 20px;
-  align-items: center;
-  justify-content: space-around;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-.App-logo {
-  animation: App-logo-spin 1s cubic-bezier(0, 0, 0, 1.04);;
-  height: 28px;
-}
-
 .App-inputs {
   display: flex;
   justify-content: center;
@@ -34,9 +10,4 @@
 
 .App-inputs .clearButton {
   margin: 0 10px;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
