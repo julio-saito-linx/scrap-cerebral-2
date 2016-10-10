@@ -1,0 +1,15 @@
+#user_detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#user_detail .details {
+  display: flex;
+  flex-direction: column;
+}
+
+#user_detail .details label {
+  margin: 0 0 10px 0;
+}
+

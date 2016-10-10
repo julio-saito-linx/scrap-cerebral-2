@@ -6,11 +6,13 @@ import './main.css';
 import Home from '../Home';
 import DisplayMyName from '../DisplayMyName/edit';
 import Users from '../Users';
+import UserDetail from '../UserDetail';
 
 const pages = {
   home: Home,
   display_my_name: DisplayMyName,
   users: Users,
+  user_detail: UserDetail,
 };
 
 export default connect(
