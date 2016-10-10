@@ -64,6 +64,8 @@
   flex-direction: row;
   justify-content: space-around;
   margin: 7px 0 0 0;
+  border-bottom: 1px solid #73429f;
+  padding: 0 0 7px 0;
 }
 
 @media all and (max-width: 500px) {
@@ -72,6 +74,8 @@
     flex-direction: column;
     justify-content: space-around;
     margin: 7px 0 0 0;
+    border-bottom: 1px solid #73429f;
+    padding: 0 0 7px 0;
   }
 }
 
@@ -81,10 +85,5 @@
 
 .menu li .selected_route {
   font-weight: bold;
-}
-
-.separator {
-  border: 1px solid #673AB7;
-  width: 100%;
 }
 

@@ -51,8 +51,6 @@ export default connect(
             </li>
           </ul>
 
-          <hr className="separator"/>
-
           <Page />
 
         </div>

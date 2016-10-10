@@ -1,4 +1,5 @@
-#users .users_pre {
-  text-align: left;
+#users {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-

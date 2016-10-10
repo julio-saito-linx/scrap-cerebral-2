@@ -12,6 +12,7 @@ export default function UsersModule(module) {
       current_user: {},
       list: {},
       list_limit: 10,
+      is_loading: true,
       is_logged: false,
     },
     routes: {
@@ -23,6 +24,7 @@ export default function UsersModule(module) {
         when('state:users.is_logged'), {
           true: [],
           false: [
+            set('state:users.is_loading', true),
             firebase_get_current_user, {
               success: [
                 set('state:users.current_user', 'input:user')
@@ -43,7 +45,8 @@ export default function UsersModule(module) {
                 set('state:users.list', 'input:value')
               ],
               error: [],
-            }
+            },
+            set('state:users.is_loading', false),
           ]
         },
       ],
