@@ -1,13 +1,21 @@
-.App-inputs {
+#display_my_name .inputs {
   display: flex;
   justify-content: center;
   margin: 0 20px;
 }
 
-.App-inputs .textValue {
+#display_my_name .inputs .textValue {
   margin: 0 10px;
 }
 
-.App-inputs .clearButton {
+#display_my_name .inputs .clearButton {
   margin: 0 10px;
+}
+
+#display_my_name .inputs .clearButton {
+  margin: 0 10px;
+}
+
+#display_my_name .name {
+  font-size: 20px;
 }

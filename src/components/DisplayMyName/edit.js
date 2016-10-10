@@ -13,13 +13,10 @@ export default connect(
   class Edit extends Component {
     render() {
       return (
-        <section className="main">
+        <section id="display_my_name">
           <h1>Display My Name</h1>
-          <p className="App-intro">
-            Edit <code>./src/components/app/App.js</code> and save to reload.
-          </p>
-          <div className="App-inputs">
-            My Name:
+          <div className="inputs">
+            name:
             <input
               className="textValue"
               type="text"
@@ -34,6 +31,11 @@ export default connect(
               Clear
             </button>
           </div>
+          {this.props.my_name && (
+            <p className="name">
+              {this.props.my_name}
+            </p>
+          )}
         </section>
       );
     }

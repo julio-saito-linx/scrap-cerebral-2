@@ -28,10 +28,6 @@
   align-items: center;
 }
 
-.App-intro {
-  font-size: large;
-}
-
 .cerebral_logo {
   animation: cerebral_logo_spin 3s cubic-bezier(0, 0, 0, 1.04);
   height: 50px;
