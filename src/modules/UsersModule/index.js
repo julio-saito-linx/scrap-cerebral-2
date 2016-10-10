@@ -1,4 +1,4 @@
-import { set } from 'cerebral/operators';
+import { set, when } from 'cerebral/operators';
 import firebase_listen_users from './actions/firebase_listen_users'
 import firebase_get_users from './actions/firebase_get_users'
 import firebase_merge_item from './actions/firebase_merge_item';
@@ -12,6 +12,7 @@ export default function UsersModule(module) {
       current_user: {},
       list: {},
       list_limit: 10,
+      is_logged: false,
     },
     routes: {
       '/': 'routed'
@@ -19,26 +20,32 @@ export default function UsersModule(module) {
     signals: {
       routed: [
         set('state:currentPage', 'users'),
-        firebase_get_current_user, {
-          success: [
-            set('state:users.current_user', 'input:user')
-          ],
-          error: [
-            firebase_login_with_facebook, {
+        when('state:users.is_logged'), {
+          true: [],
+          false: [
+            firebase_get_current_user, {
               success: [
                 set('state:users.current_user', 'input:user')
               ],
-              error: [],
+              error: [
+                firebase_login_with_facebook, {
+                  success: [
+                    set('state:users.current_user', 'input:user')
+                  ],
+                  error: [],
+                },
+              ],
             },
-          ],
+            set('state:users.is_logged', true),
+            firebase_listen_users,
+            firebase_get_users, {
+              success: [
+                set('state:users.list', 'input:value')
+              ],
+              error: [],
+            }
+          ]
         },
-        firebase_listen_users,
-        firebase_get_users, {
-          success: [
-            set('state:users.list', 'input:value')
-          ],
-          error: [],
-        }
       ],
       usersChildAdded: [ firebase_merge_item('members.usersList') ],
       usersChildChanged: [ firebase_merge_item('members.usersList') ],
