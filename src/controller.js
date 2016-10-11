@@ -1,6 +1,6 @@
 import { Controller } from 'cerebral';
 import Devtools from 'cerebral/devtools';
-import Router from 'cerebral/router';
+import Router from 'cerebral-router';
 import FirebaseProvider from 'cerebral-provider-firebase';
 import HomeModule from './modules/HomeModule';
 import DisplayMyNameModule from './modules/DisplayMyNameModule';
