@@ -35,5 +35,7 @@ module.exports = {
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
   ownNodeModules: resolveApp('node_modules'),
+  cerebralPath: path.resolve('..', 'cerebral', 'packages', 'cerebral'),
+  cerebralRouterPath: path.resolve('..', 'cerebral', 'packages', 'cerebral-router'),
   nodePaths: nodePaths
 };
