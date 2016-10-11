@@ -18,7 +18,7 @@ var publicPath = '/';
 var publicUrl = '';
 // Get enrivonment variables to inject into our app.
 var env = getClientEnvironment(publicUrl);
-var cerebralPath = path.resolve('..', 'cerebral', 'src');
+var cerebralPath = path.resolve('..', 'cerebral', 'packages', 'src');
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -80,7 +80,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      // 'cerebral': cerebralPath,
+      //'cerebral': cerebralPath,
     }
   },
   
