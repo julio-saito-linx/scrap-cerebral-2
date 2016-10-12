@@ -49,7 +49,8 @@
     "url-loader": "0.5.7",
     "webpack": "1.13.2",
     "webpack-dev-server": "1.16.2",
-    "whatwg-fetch": "1.0.0"
+    "whatwg-fetch": "1.0.0",
+    "@kadira/storybook": "^2.21.0"
   },
   "dependencies": {
     "cerebral": "^2.0.0-alpha.4",
@@ -64,7 +65,9 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "serve": "npm run build && firebase serve",
-    "deploy": "npm run build && firebase deploy"
+    "deploy": "npm run build && firebase deploy",
+    "storybook": "NODE_ENV=test start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "unmockedModulePathPatterns": [

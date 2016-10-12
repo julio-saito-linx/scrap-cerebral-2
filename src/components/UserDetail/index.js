@@ -3,15 +3,12 @@ import { connect } from 'cerebral/react';
 import './index.css';
 
 export default connect({
-    user_id: `users.user_id`,
-    users: `users.list.*`,
+    selected_user: 'users.selected_user',
     is_loading: 'users.is_loading',
   },
   {},
   class UserDetail extends Component {
     render() {
-      const user = this.props.users[ this.props.user_id ];
-
       return (
         <section id="user_detail">
           <h1>User Details</h1>
@@ -20,14 +17,14 @@ export default connect({
           ) : (
             <div className="details">
               <label htmlFor="id">
-                <img src={user.photoURL} alt="user"/>
+                <img src={this.props.selected_user.photoURL} alt="user"/>
               </label>
               <label htmlFor="name">
-                {user.displayName}
+                {this.props.selected_user.displayName}
               </label>
               <label htmlFor="id">
                 <code>
-                  {user.user_id}
+                  {this.props.selected_user.uid}
                 </code>
               </label>
             </div>

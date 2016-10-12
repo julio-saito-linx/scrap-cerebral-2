@@ -3,11 +3,8 @@ import { connect } from 'cerebral/react';
 import cerebral_logo_png from './assets/cerebral.png';
 
 export default connect(
-  {
-    // currentPage: 'main.currentPage',
-  },
-  {
-  },
+  {},
+  {},
   class Home extends Component {
     render() {
       return (

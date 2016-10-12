@@ -5,7 +5,8 @@ import firebase_merge_item from './actions/firebase_merge_item';
 import firebase_remove_item from './actions/firebase_remove_item';
 import firebase_get_current_user from './actions/firebase_get_current_user';
 import firebase_login_with_facebook from './actions/firebase_login_with_facebook';
-
+import set_selected_user from './actions/set_selected_user';
+import firebase_save_user from './actions/firebase_save_user';
 
 const login = [
   set('state:users.is_loading', true),
@@ -16,7 +17,11 @@ const login = [
     error: [
       firebase_login_with_facebook, {
         success: [
-          set('state:users.current_user', 'input:user')
+          set('state:users.current_user', 'input:user'),
+          firebase_save_user, {
+            success: [],
+            error: [],
+          }
         ],
         error: [],
       },
@@ -47,12 +52,12 @@ export default function UsersModule(module) {
     },
     routes: {
       '/': 'routed',
-      '/:user_id': 'routed_user_detail',
+      '/:uid': 'routed_user_detail',
     },
     signals: {
       routed: [
         set('state:currentPage', 'users'),
-        set('state:users.user_id', null),
+        set('state:users.uid', null),
         when('state:users.is_logged'), {
           true: [],
           false: [
@@ -70,7 +75,7 @@ export default function UsersModule(module) {
             ...get_users_list,
           ]
         },
-        set('state:users.user_id', 'input:user_id'),
+        set_selected_user,
       ],
       usersChildAdded: [ firebase_merge_item('users.list') ],
       usersChildChanged: [ firebase_merge_item('users.list') ],

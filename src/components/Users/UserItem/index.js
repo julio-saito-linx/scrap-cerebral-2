@@ -6,7 +6,7 @@ export default connect((props) => ({
   }),
   function Item(props) {
     return (
-      <a href={`/users/${props.user.user_id}`}>{props.user.displayName}</a>
+      <a href={`/users/${props.user.uid}`}>{props.user.displayName}</a>
     )
   }
 )

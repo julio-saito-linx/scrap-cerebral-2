@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'cerebral/react';
-import './index.css';
 import users_list from '../../computed/users_list'
 import UserItem from './UserItem/index'
+
+require('./index.css');
+require('../shared_styles/loading_pulse.css');
 
 export default connect(
   {
