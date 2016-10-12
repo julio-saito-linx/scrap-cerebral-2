@@ -56,18 +56,23 @@
     "cerebral": "^2.0.0-alpha.4",
     "cerebral-provider-firebase": "^0.1.0",
     "cerebral-router": "^1.0.0-alpha.2",
+    "firebase": "^3.4.1",
+    "firebase-queue": "^1.5.0",
     "function-tree": "^0.5.0-alpha.2",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "dev-local-server": "node scripts/start.js",
+    "queue-local-server": "node queue/start.js",
+    "start": "npm run dev-local-server & TASK_PID=$! && npm run queue-local-server && kill $TASK_PID",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "serve": "npm run build && firebase serve",
+    "prod-local-server": "npm run build && firebase serve",
     "deploy": "npm run build && firebase deploy",
     "storybook": "NODE_ENV=test start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "clean-watchman": "watchman watch-del-all; watchman shutdown-server"
   },
   "jest": {
     "unmockedModulePathPatterns": [

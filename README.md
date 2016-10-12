@@ -10,3 +10,10 @@
 
 
 _This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)._
+
+```shell
+/opt/logstash/bin/logstash
+
+/usr/lib/kibana/bin/kibana
+# http://localhost:5601/app/kibana
+```
