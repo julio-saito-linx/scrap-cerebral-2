@@ -19,23 +19,35 @@ module.exports = class check_odd_number {
 
   static spec_obj() {
     return {
-      start_state: 'spec_check_odd_number',
-      in_progress_state: 'check_odd_number_in_progress',
-      finished_state: null,
-      // finished_state: 'check_odd_number_finished',
+      start_state: 'spec__check_odd_number',
+      in_progress_state: 'spec__check_odd_number_in_progress',
+      finished_state: 'spec__check_odd_number_finished',
       timeout: 10000
     };
   }
 
   static task(data, progress, resolve) {
-    logger.verbose('[task:stated] check_odd_number', { data });
+    logger.debug('TASK', {
+      __filename,
+      name: 'check_odd_number',
+      state: 'starting',
+      data,
+    });
+
+    let result = null;
     if (data.number % 2 === 1) {
-      logger.info('[task:finished] check_odd_number === ODD', { data });
-      const result = { number: data.number };
-      resolve(result);
-    } else {
-      logger.info('[task:finished] check_odd_number !== odd', { data });
-      resolve(null);
+      result = {
+        number: data.number
+      };
     }
+
+    logger.debug('TASK', {
+      __filename,
+      name: 'check_odd_number',
+      state: 'finished',
+      data,
+      result,
+    });
+    resolve(result);
   }
 };
