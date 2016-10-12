@@ -15,16 +15,16 @@ setTimeout(() => {
   setInterval(() => {
     console.log(`\nSEND: pushing ${number}\n`);
     number = ++number;
-    if (number % 3 === 0) {
-      ref.child('tasks').push({
-        _state: 'spec_multiply_by_10',
-        number
-      });
-    } else {
+    // if (number % 3 === 0) {
+    //   ref.child('tasks').push({
+    //     _state: 'spec_multiply_by_10',
+    //     number
+    //   });
+    // } else {
       ref.child('tasks').push({
         _state: 'spec_check_odd_number',
         number
       });
-    }
+    // }
   }, 1000);
-}, 5000);
+}, 0);
