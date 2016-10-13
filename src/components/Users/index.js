@@ -21,7 +21,7 @@ export default connect(
             <div className="loading-pulse"></div>
           ) : (
             this.props.users_list.map((key) => (
-              <UserItem key={key} itemKey={key}/>
+              <UserItem key={key} itemKey={key} user={this.props.users && this.props.users[key]}/>
             ))
           )}
         </section>
