@@ -68,7 +68,7 @@
   },
   "scripts": {
     "dev-local-server": "node scripts/start.js",
-    "queue-local-server": "node queue/start.js",
+    "queue-local-server": "node queue/index.js",
     "start": "npm run dev-local-server & TASK_PID=$! && npm run queue-local-server && kill $TASK_PID",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
