@@ -12,7 +12,19 @@ export const user_stub = {
 };
 
 export const users_stub = {
-  'user_1': _.merge({}, user_stub, { uid: 'user_1', displayName: 'Roberto Marinha' }),
-  'user_2': _.merge({}, user_stub, { uid: 'user_2', displayName: 'Plablo Henrique' }),
-  'user_3': _.merge({}, user_stub, { uid: 'user_3', displayName: 'John Smith' }),
+  'user_1': _.merge({}, user_stub, {
+    uid: 'user_1',
+    photoURL: 'https://robohash.org/user_1',
+    displayName: 'Roberto Marinha'
+  }),
+  'user_2': _.merge({}, user_stub, {
+    uid: 'user_2',
+    photoURL: 'https://robohash.org/user_2',
+    displayName: 'Plablo Henrique'
+  }),
+  'user_3': _.merge({}, user_stub, {
+    uid: 'user_3',
+    photoURL: 'https://robohash.org/user_3',
+    displayName: 'John Smith'
+  }),
 };

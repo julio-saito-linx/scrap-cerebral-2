@@ -25,7 +25,7 @@
   display: block;
   height: 16px;
   width: 6px;
-  background: rgba(122, 122, 122, 0.2);
+  background: #7A7A7A;
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);

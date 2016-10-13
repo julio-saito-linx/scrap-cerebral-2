@@ -22,14 +22,15 @@ export default connect(
   {},
   class Main extends Component {
     _render_route_link(link_name, link_href) {
+      let route = <a href={link_href}>{link_name}</a>;
       if (this.props.currentPage === link_name) {
-        return <a className="selected_route" href={link_href}>{link_name}</a>;
+        route = <a className="selected_route" href={link_href}>{link_name}</a>;
       }
-      return <a href={link_href}>{link_name}</a>;
+      return route;
     }
 
     render() {
-      const Page = pages[ this.props.currentPage ];
+      const page = pages[ this.props.currentPage ];
       return (
         <div className="App">
           <div className="App-header">
@@ -53,7 +54,7 @@ export default connect(
             </li>
           </ul>
 
-          <Page />
+          <page />
 
         </div>
 

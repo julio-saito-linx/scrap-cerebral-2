@@ -1,8 +1,6 @@
 import firebase from 'firebase';
 
 export default function firebase_save_user({ input, path }) {
-  console.log({ "firebase": firebase }); // DEBUG
-
   // User info
   if (!input.user) {
     return path.error();

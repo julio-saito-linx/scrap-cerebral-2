@@ -1,15 +1,15 @@
-#user_detail {
+#user-detail-section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#user_detail .details {
+.user-details {
   display: flex;
   flex-direction: column;
 }
 
-#user_detail .details label {
+.user-details label {
   margin: 0 0 10px 0;
 }
 

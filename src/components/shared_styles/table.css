@@ -1,0 +1,23 @@
+.item-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+  width: 100%;
+  border: 1px solid #ABC7ED;
+  padding: 5px;
+}
+
+.item-column {
+  margin: 0 0 0 10px;
+  flex-grow: 1;
+}
+
+.item-link {
+  font-size: 18px;
+  color: cornflowerblue;
+}
+
+.item-photo {
+  height: 50px;
+}

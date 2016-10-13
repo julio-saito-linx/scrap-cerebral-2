@@ -10,12 +10,12 @@ export default connect({
   class UserDetail extends Component {
     render() {
       return (
-        <section id="user_detail">
+        <section id="user-detail-section">
           <h1>User Details</h1>
           {this.props.is_loading ? (
             <div className="loading-pulse"></div>
           ) : (
-            <div className="details">
+            <div className="user-details">
               <label htmlFor="id">
                 <img src={this.props.selected_user.photoURL} alt="user"/>
               </label>
