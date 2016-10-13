@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import DisplayMyName from '../DisplayMyName/edit';
+import DisplayMyName from './index';
 
 storiesOf('DisplayMyName', module)
   .add('empty', () => (

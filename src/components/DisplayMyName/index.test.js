@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container} from 'cerebral/react'
 import ReactDOM from 'react-dom';
-import Edit from './edit';
+import Edit from './index';
 import { mount } from 'enzyme';
 
 const getComponent = () => {

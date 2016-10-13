@@ -4,7 +4,7 @@ import cerebral_logo from './assets/cerebral_logo_bg.svg';
 import react_logo from './assets/logo.svg';
 import './main.css';
 import Home from '../Home';
-import DisplayMyName from '../DisplayMyName/edit';
+import DisplayMyName from '../DisplayMyName/index';
 import Users from '../Users';
 import UserDetail from '../UserDetail';
 

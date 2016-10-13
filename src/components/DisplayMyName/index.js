@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './edit.css';
+import './index.css';
 import { connect } from 'cerebral/react';
 
 export default connect(

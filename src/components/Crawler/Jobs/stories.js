@@ -1,12 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import Users from './index';
+import Jobs from './index';
 
-storiesOf('Users', module)
+storiesOf('Jobs', module)
   .add('is_loading === true', () => (
-    <Users is_loading={true} />
+    <Jobs is_loading={true} />
   ))
   .add('is_loading === false', () => (
-    <Users is_loading={false} users_list={[]} />
+    <Jobs is_loading={false} jobs_list={[]} />
   ))
 ;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import UserDetail from '../UserDetail';
+import UserDetail from './index';
 import { user_stub } from '../stubs/users';
 
 storiesOf('UserDetail', module)

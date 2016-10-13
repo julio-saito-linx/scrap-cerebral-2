@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import Main from '../Main';
+import Main from './index';
 
 storiesOf('Main', module)
   .add('currentPage="home"', () => (
