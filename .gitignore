@@ -15,4 +15,4 @@ build
 npm-debug.log
 
 queue/serviceAccountCredentials
-logs/
+app.log

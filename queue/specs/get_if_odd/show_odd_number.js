@@ -27,18 +27,21 @@ module.exports = class show_odd_number {
   }
 
   static task(data, progress, resolve) {
+    // logger -----------
     logger.debug('TASK', {
       __filename,
       name: 'show_odd_number',
       state: 'starting',
       data,
     });
+    // ------------------
 
     let result = null;
     if (data.number) {
-      console.log(`\n${data.number} is odd!\n`);
+      console.log(`${data.number} is odd!`);
     }
 
+    // logger -----------
     logger.debug('TASK', {
       __filename,
       name: 'show_odd_number',
@@ -46,6 +49,7 @@ module.exports = class show_odd_number {
       data,
       result,
     });
+    // ------------------
     resolve(result);
   }
 };

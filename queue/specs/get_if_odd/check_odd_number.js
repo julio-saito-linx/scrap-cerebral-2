@@ -27,12 +27,14 @@ module.exports = class check_odd_number {
   }
 
   static task(data, progress, resolve) {
+    // logger -----------
     logger.debug('TASK', {
       __filename,
       name: 'check_odd_number',
       state: 'starting',
       data,
     });
+    // ------------------
 
     let result = null;
     if (data.number % 2 === 1) {
@@ -41,6 +43,7 @@ module.exports = class check_odd_number {
       };
     }
 
+    // logger -----------
     logger.debug('TASK', {
       __filename,
       name: 'check_odd_number',
@@ -48,6 +51,7 @@ module.exports = class check_odd_number {
       data,
       result,
     });
+    // ------------------
     resolve(result);
   }
 };

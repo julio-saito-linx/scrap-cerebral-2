@@ -16,4 +16,12 @@ _This project was bootstrapped with [Create React App](https://github.com/facebo
 
 /usr/lib/kibana/bin/kibana
 # http://localhost:5601/app/kibana
+
+# stdoutput
+/opt/logstash/bin/logstash -f queue/utils/logstash_config.conf
+
+# elatistic search
+/opt/logstash/bin/logstash -f queue/utils/logstash_config_elastic.conf
+
+rm logs/queue.log && node queue/send.js & TASK_PID=$! && node queue/index.js  && kill $TASK_PID
 ```
