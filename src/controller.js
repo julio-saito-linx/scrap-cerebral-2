@@ -5,6 +5,7 @@ import FirebaseProvider from 'cerebral-provider-firebase';
 import HomeModule from './modules/HomeModule';
 import DisplayMyNameModule from './modules/DisplayMyNameModule';
 import UsersModule from './modules/UsersModule';
+import JobsModule from './modules/Crawler/JobsModule';
 
 const controller = Controller({
   devtools: process.env.NODE_ENV === 'production' ? null : Devtools(),
@@ -13,6 +14,9 @@ const controller = Controller({
     display_my_name: DisplayMyNameModule,
     home: HomeModule,
     users: UsersModule,
+
+    //crawler
+    jobs: JobsModule,
   },
 
   state: {

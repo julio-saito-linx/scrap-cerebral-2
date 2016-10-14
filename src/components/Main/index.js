@@ -4,15 +4,19 @@ import cerebral_logo from './assets/cerebral_logo_bg.svg';
 import react_logo from './assets/logo.svg';
 import './main.css';
 import Home from '../Home';
-import DisplayMyName from '../DisplayMyName/index';
+import DisplayMyName from '../DisplayMyName';
 import Users from '../Users';
 import UserDetail from '../UserDetail';
+import Jobs from '../Crawler/Jobs';
 
 const pages = {
   home: Home,
   display_my_name: DisplayMyName,
   users: Users,
   user_detail: UserDetail,
+
+  // crawler
+  jobs: Jobs,
 };
 
 export default connect(
@@ -30,7 +34,7 @@ export default connect(
     }
 
     render() {
-      const page = pages[ this.props.currentPage ];
+      const Page = pages[ this.props.currentPage ];
       return (
         <div className="App">
           <div className="App-header">
@@ -52,9 +56,12 @@ export default connect(
             <li>
               {this._render_route_link('users', '/users')}
             </li>
+            <li>
+              {this._render_route_link('jobs', '/jobs')}
+            </li>
           </ul>
 
-          <page />
+          <Page />
 
         </div>
 
