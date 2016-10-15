@@ -6,6 +6,10 @@
       ".read": "auth != null",
       ".write": "auth != null"
     },
+    "jobs": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
 
     "queue": {
       "tasks": {

@@ -16,3 +16,4 @@ npm-debug.log
 
 queue/serviceAccountCredentials
 app.log
+/yarn.lock

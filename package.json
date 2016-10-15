@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
+    "@kadira/storybook": "^2.21.0",
     "autoprefixer": "6.5.0",
     "babel-core": "6.17.0",
     "babel-eslint": "^6.1.2",
@@ -49,8 +50,7 @@
     "url-loader": "0.5.7",
     "webpack": "1.13.2",
     "webpack-dev-server": "1.16.2",
-    "whatwg-fetch": "1.0.0",
-    "@kadira/storybook": "^2.21.0"
+    "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
     "cerebral": "^2.0.0-alpha.4",
@@ -60,6 +60,7 @@
     "firebase-queue": "^1.5.0",
     "function-tree": "^0.5.0-alpha.2",
     "glob": "^7.1.1",
+    "lodash": "^4.16.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "tcp-ping": "^0.1.1",

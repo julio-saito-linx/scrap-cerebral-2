@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'cerebral/react';
-import jobs_list from '../../../computed/jobs_list'
-import JobItem from './JobItem/index'
+import jobs_list from '../../../computed/jobs_list';
+import JobItem from './JobItem/index';
 
 require('./index.css');
 require('../../shared_styles/loading_pulse.css');
@@ -21,7 +21,7 @@ export default connect(
             <div className="loading-pulse"></div>
           ) : (
             this.props.jobs_list.map((key) => (
-              <JobItem key={key} itemKey={key} job={this.props.jobs && this.props.jobs[key]}/>
+              <JobItem key={key} itemKey={key} job={this.props.jobs && this.props.jobs[ key ]}/>
             ))
           )}
         </section>

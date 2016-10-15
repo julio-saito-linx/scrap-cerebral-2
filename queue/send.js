@@ -1,7 +1,7 @@
 const firebase = require('firebase');
 const path = require('path');
 
-var create_examples_tasks = function () {
+const create_examples_tasks = function () {
   require('dotenv').config({ silent: true });
 
   firebase.initializeApp({

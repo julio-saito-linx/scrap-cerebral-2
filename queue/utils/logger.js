@@ -1,7 +1,7 @@
 const winston = require('winston');
 require('winston-logstash');
 const resolvePath = require('../utils/resolvePath');
-var tcpp = require('tcp-ping');
+const tcpp = require('tcp-ping');
 
 let transports;
 
@@ -19,7 +19,7 @@ transports = [
   }),
 ];
 
-var check_and_add_logstash_transport = function () {
+const check_and_add_logstash_transport = function () {
   const logstash_port = 28777;
   tcpp.probe('localhost', logstash_port, function (err, available) {
     if (available) {
@@ -45,6 +45,6 @@ WARN: Cannot find Logstash on ${logstash_port}
 
 check_and_add_logstash_transport();
 
-var logger = new (winston.Logger)({ transports });
+const logger = new (winston.Logger)({ transports });
 
 module.exports = logger;
