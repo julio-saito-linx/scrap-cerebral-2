@@ -79,6 +79,7 @@
     "storybook": "NODE_ENV=test start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "queue-local-server": "node queue/index.js",
+    "start-kibana": "/usr/lib/kibana/bin/kibana",
     "logstash-wait-for-server": "node ./scripts/wait_for_logstash.js",
     "logstash-server": "/opt/logstash/bin/logstash -f queue/utils/logstash_config_elastic.conf"
   },

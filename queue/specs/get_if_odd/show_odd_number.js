@@ -1,8 +1,8 @@
 const Queue = require('firebase-queue');
-const logger = require('../../utils/logger');
 
 module.exports = class show_odd_number {
-  constructor(ref) {
+  constructor(ref, logger) {
+    show_odd_number.logger = logger;
     this.queue = new Queue(ref, {
       specId: 'show_odd_number',
       numWorkers: 3
@@ -28,7 +28,7 @@ module.exports = class show_odd_number {
 
   static task(data, progress, resolve) {
     // logger -----------
-    logger.debug('TASK', {
+    show_odd_number.logger.debug('TASK', {
       __filename,
       name: 'show_odd_number',
       state: 'starting',
@@ -42,7 +42,7 @@ module.exports = class show_odd_number {
     }
 
     // logger -----------
-    logger.debug('TASK', {
+    show_odd_number.logger.debug('TASK', {
       __filename,
       name: 'show_odd_number',
       state: 'finished',

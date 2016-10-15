@@ -1,9 +1,16 @@
 const glob = require('glob');
 const firebase = require('firebase');
 const resolvePath = require('./utils/resolvePath');
-const logger = require('./utils/logger');
+const Logger = require('./utils/logger');
 
 let queue_instances = [];
+let logger;
+const loggerCreator = new Logger();
+
+loggerCreator.init_async().then((logger_instance) => {
+  logger = logger_instance;
+  init();
+});
 
 /**
  * get queue ref
@@ -40,7 +47,7 @@ const load_specs = (ref, files) => {
     specs_map_list[ Spec.get_name() ] = Spec.spec_obj();
 
     // store instaces for shutdown
-    const spec = new Spec(ref);
+    const spec = new Spec(ref, logger);
     queue_instances.push(spec.queue_instance);
   });
 
@@ -98,5 +105,3 @@ process.on('SIGINT', () => {
     setTimeout(() => process.exit(0), 200);
   })
 });
-
-init();

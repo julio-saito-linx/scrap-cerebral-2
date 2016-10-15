@@ -13,7 +13,10 @@ _This project was bootstrapped with [Create React App](https://github.com/facebo
 ```shell
 /opt/logstash/bin/logstash
 
-/usr/lib/kibana/bin/kibana
+# /usr/lib/kibana/bin/kibana
+sudo chown julio:julio /usr/lib/kibana/bin/kibana
+sudo chown -R julio:julio /usr/lib/kibana/optimize/
+
 # http://localhost:5601/app/kibana
 
 # stdoutput

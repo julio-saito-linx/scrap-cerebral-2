@@ -1,9 +1,9 @@
 const firebase = require('firebase');
 const Queue = require('firebase-queue');
-const logger = require('../../utils/logger');
 
 module.exports = class create_job {
-  constructor(ref) {
+  constructor(ref, logger) {
+    create_job.logger = logger;
     this.queue = new Queue(ref, {
       specId: 'create_job',
       numWorkers: 3
@@ -29,7 +29,7 @@ module.exports = class create_job {
 
   static task(data, progress, resolve) {
     // logger -----------
-    logger.debug('TASK', {
+    create_job.logger.debug('TASK', {
       __filename,
       name: 'create_job',
       state: 'starting',
@@ -45,7 +45,7 @@ module.exports = class create_job {
     // }
 
     // logger -----------
-    logger.debug('TASK', {
+    create_job.logger.debug('TASK', {
       __filename,
       name: 'create_job',
       state: 'finished',
