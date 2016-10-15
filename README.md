@@ -10,6 +10,14 @@
 
 _This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)._
 
+# start all
+
+```shell
+./scripts/start-all.sh
+```
+
+# personal reffs
+
 ```shell
 /opt/logstash/bin/logstash
 

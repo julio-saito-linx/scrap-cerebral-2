@@ -13,7 +13,7 @@ loggerCreator.init_async().then((logger_instance) => {
 });
 
 /**
- * get queue ref
+ * get firebase database
  * @returns {firebase.database.Reference|!firebase.database.Reference}
  */
 const firebase_init = () => {
@@ -22,15 +22,15 @@ const firebase_init = () => {
     serviceAccount: resolvePath(process.env.FIREBASE_CRED_JSON_PATH),
     databaseURL: process.env.FIREBASE_DATABASE_URL
   });
-  return firebase.database().ref('queue');
+  return firebase.database();
 };
 
 /**
  * load and save spec dinamically
- * @param ref
+ * @param database
  * @param files
  */
-const load_specs = (ref, files) => {
+const load_specs = (database, files) => {
   let specs_map_list = {};
 
   // logger -----------
@@ -47,7 +47,7 @@ const load_specs = (ref, files) => {
     specs_map_list[ Spec.get_name() ] = Spec.spec_obj();
 
     // store instaces for shutdown
-    const spec = new Spec(ref, logger);
+    const spec = new Spec(logger);
     queue_instances.push(spec.queue_instance);
   });
 
@@ -60,14 +60,14 @@ const load_specs = (ref, files) => {
   });
   // ------------------
 
-  ref.child('specs').set(specs_map_list);
+  database.ref('queue').child('specs').set(specs_map_list);
 };
 
 /**
  * start here
  */
 const init = () => {
-  const ref = firebase_init();
+  const database = firebase_init();
 
   // logger -----------
   logger.debug('SPECS', {
@@ -79,7 +79,7 @@ const init = () => {
 
   const specs_path = resolvePath('./queue/specs');
   glob(`${specs_path}/**/*.js`, (er, files) => {
-    load_specs(ref, files);
+    load_specs(database, files);
   });
 };
 

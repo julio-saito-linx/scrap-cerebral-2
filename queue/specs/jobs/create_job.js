@@ -2,9 +2,9 @@ const firebase = require('firebase');
 const Queue = require('firebase-queue');
 
 module.exports = class create_job {
-  constructor(ref, logger) {
+  constructor(logger) {
     create_job.logger = logger;
-    this.queue = new Queue(ref, {
+    this.queue = new Queue(firebase.database().ref('queue'), {
       specId: 'create_job',
       numWorkers: 3
     }, (...args) => create_job.task(...args));
@@ -27,7 +27,7 @@ module.exports = class create_job {
     };
   }
 
-  static task(data, progress, resolve) {
+  static task(data, progress, resolve, reject) {
     // logger -----------
     create_job.logger.debug('TASK', {
       __filename,
@@ -37,22 +37,27 @@ module.exports = class create_job {
     });
     // ------------------
 
-    let result = null;
-    // if (data.number % 2 === 1) {
-    //   result = {
-    //     number: data.number
-    //   };
-    // }
+    const queue_ref = firebase.database().ref('queue');
 
-    // logger -----------
-    create_job.logger.debug('TASK', {
-      __filename,
-      name: 'create_job',
-      state: 'finished',
-      data,
-      result,
-    });
-    // ------------------
-    resolve(result);
+    const key = firebase.database().ref('jobs').push().key;
+    const updates = {};
+    updates[ `/jobs/${key}` ] = data;
+
+    // Send to firebase
+    return firebase.database().ref().update(updates)
+      .then((res) => {
+        console.log({"res": res}); // DEBUG
+        // logger -----------
+        create_job.logger.debug('TASK', {
+          __filename,
+          name: 'create_job',
+          state: 'finished',
+          data,
+          res,
+        });
+        // ------------------
+        return resolve()
+      })
+      .catch(reject);
   }
 };

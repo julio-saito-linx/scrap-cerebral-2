@@ -8,7 +8,7 @@
     },
     "jobs": {
       ".read": "auth != null",
-      ".write": "auth != null"
+      ".write": "auth != null",
     },
 
     "queue": {
