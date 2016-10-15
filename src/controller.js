@@ -45,7 +45,7 @@ const controller = Controller({
       // the specs triggered. This is useful in development
       // when multiple developers are working on the
       // same instance
-      specPrefix: 'CJ'
+      // specPrefix: 'CJ'
     })
   ],
 

@@ -8,7 +8,7 @@ let transports;
 // set initial transports
 transports = [
   new (winston.transports.Console)({
-    level: 'info',
+    level: 'debug',
     handleExceptions: true,
     colorize: true,
   }),

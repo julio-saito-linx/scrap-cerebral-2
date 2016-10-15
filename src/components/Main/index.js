@@ -8,6 +8,7 @@ import DisplayMyName from '../DisplayMyName';
 import Users from '../Users';
 import UserDetail from '../UserDetail';
 import Jobs from '../Crawler/Jobs';
+import JobsCreate from '../Crawler/JobsCreate';
 
 const pages = {
   home: Home,
@@ -17,6 +18,7 @@ const pages = {
 
   // crawler
   jobs: Jobs,
+  jobs_create: JobsCreate,
 };
 
 export default connect(
@@ -58,6 +60,9 @@ export default connect(
             </li>
             <li>
               {this._render_route_link('jobs', '/jobs')}
+            </li>
+            <li>
+              {this._render_route_link('jobs/create', '/jobs/create')}
             </li>
           </ul>
 

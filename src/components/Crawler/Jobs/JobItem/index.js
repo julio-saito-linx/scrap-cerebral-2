@@ -5,7 +5,7 @@ require('../../../shared_styles/table.css');
 require('./index.css');
 
 export default connect((props) => ({
-    job: `crawler.jobs.list.${props.itemKey}`,
+    job: `jobs.list.${props.itemKey}`,
   }),
   function Item(props) {
     return (

@@ -9,7 +9,7 @@ require('../../shared_styles/loading_pulse.css');
 export default connect(
   {
     jobs_list: jobs_list(),
-    is_loading: 'crawler.jobs.is_loading',
+    is_loading: 'jobs.is_loading',
   },
   {},
   class Jobs extends Component {
