@@ -9,15 +9,18 @@ export default connect((props) => ({
   }),
   function Item(props) {
     return (
-    <div className="item-row job-row">
-      <div className="item-column">
-        {props.job.name}
+      <div className="item-row job-row">
+        <div className="item-column">
+          <a className="item-link"
+             href={`/crawler/jobs/${props.job.id}`}>{props.job.job_name}</a>
+        </div>
+        <div className="item-column">
+          {props.job.initial_spec_state}
+        </div>
+        <div className="item-column">
+          {props.job.url}
+        </div>
       </div>
-      <div className="item-column">
-        <a className="item-link"
-          href={`/crawler/jobs/${props.job.id}`}>{props.job.name}</a>
-      </div>
-    </div>
 
     )
   }

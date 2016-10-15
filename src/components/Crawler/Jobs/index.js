@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'cerebral/react';
 import jobs_list from '../../../computed/jobs_list';
 import JobItem from './JobItem/index';
-
 require('./index.css');
 require('../../shared_styles/loading_pulse.css');
 

@@ -46,7 +46,6 @@ module.exports = class create_job {
     // Send to firebase
     return firebase.database().ref().update(updates)
       .then((res) => {
-        console.log({"res": res}); // DEBUG
         // logger -----------
         create_job.logger.debug('TASK', {
           __filename,

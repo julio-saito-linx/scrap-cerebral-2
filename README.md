@@ -2,19 +2,34 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-- Cerebral Controller
-- Cerebral Router
-- Firebase database
-- Firebase auth
-- Firebase hosting
+### run dev
 
-_This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)._
-
-# start all
+####Install:
 
 ```shell
+npm i
 ./scripts/start-all.sh
 ```
+
+(optional) If you want you can do professional logging installing **ElasticSearch**, **Logstash** and **Kibana**.
+
+## libs used
+
+#### Site
+
+- [cerebral 2](http://cerebral.github.io/cerebral-website)
+- [cerebral-module-router](cerebral-module-router)
+- [cerebral-provider-firebase](https://github.com/cerebral/cerebral-provider-firebase)
+- [firebase.database](https://firebase.google.com/docs/reference/node/firebase.database.Reference)
+- [Storybooks.io](https://storybooks.io/)
+- [create-react-app](https://github.com/facebookincubator/create-react-app)
+
+#### Server
+
+- [firebase-queue](https://github.com/firebase/firebase-queue)
+- [logstash](https://www.elastic.co/products/logstash)
+- [elasticsearch](https://www.elastic.co/products/elasticsearch)
+- [kibana](https://www.elastic.co/products/kibana)
 
 # personal reffs
 
@@ -35,3 +50,5 @@ sudo chown -R julio:julio /usr/lib/kibana/optimize/
 
 rm logs/queue.log && node queue/send.js & TASK_PID=$! && node queue/index.js  && kill $TASK_PID
 ```
+
+_This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)._

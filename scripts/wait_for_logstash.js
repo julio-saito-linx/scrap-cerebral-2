@@ -4,7 +4,8 @@ let count = 0;
 const interval_id = setInterval(() => {
   tcpp.probe('localhost', 28777, function(err, available) {
     if (err) {
-      console.log(err); // DEBUG
+      console.error(err);
+      throw err;
     }
     count++;
 

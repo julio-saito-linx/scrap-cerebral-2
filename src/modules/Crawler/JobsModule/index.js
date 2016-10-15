@@ -16,11 +16,9 @@ function firebase_save_task_new_job({ state, path, firebase }) {
     url: state.get('jobs.new_job.url'),
   })
     .then((result) => {
-      console.log(result); // DEBUG
       return path.success();
     })
     .catch((error) => {
-      console.log(error); // DEBUG
       return path.error();
     });
 }
@@ -31,7 +29,7 @@ export default module => ({
     list: {},
     list_limit: 10,
     is_loading: false,
-    is_logged: false,
+    is_loaded: false,
 
     new_job: {
       job_name: '',
