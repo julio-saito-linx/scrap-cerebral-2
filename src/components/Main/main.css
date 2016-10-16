@@ -21,6 +21,10 @@
   align-items: center;
 }
 
+.header_init h2 {
+  margin: 0;
+}
+
 .header_end {
   display: flex;
   flex-direction: row;

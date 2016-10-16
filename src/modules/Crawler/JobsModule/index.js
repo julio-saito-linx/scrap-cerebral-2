@@ -8,6 +8,7 @@ import firebase_remove_item from '../../../shared_actions/firebase/firebase_remo
 import update_field from '../../../shared_actions/components/update_field';
 import { set } from 'cerebral/operators';
 import { redirect } from 'cerebral-router';
+import __ll from '../../../utils/__ll';
 
 function firebase_save_task_new_job({ state, path, firebase }) {
   return firebase.task('spec__create_job', {
@@ -53,6 +54,9 @@ export default module => ({
 
     fieldChanged: [ update_field ],
     saveClicked: [
+      function (context) {
+        __ll(context);
+      },
       firebase_save_task_new_job, {
         success: [
           set('state:jobs.saved', true),

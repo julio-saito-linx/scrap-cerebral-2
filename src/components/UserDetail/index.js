@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'cerebral/react';
 import './index.css';
+import BigLoading from '../BigLoading/index';
 
 export default connect({
     selected_user: 'users.selected_user',
@@ -13,7 +14,7 @@ export default connect({
         <section id="user-detail-section">
           <h1>User Details</h1>
           {this.props.is_loading ? (
-            <div className="loading-pulse"></div>
+            <BigLoading/>
           ) : (
             <div className="user-details">
               <label htmlFor="id">

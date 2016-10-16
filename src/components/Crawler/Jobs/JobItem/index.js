@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'cerebral/react';
+import { Table } from 'semantic-ui-react';
 
 require('../../../shared_styles/table.css');
 require('./index.css');
@@ -9,19 +10,22 @@ export default connect((props) => ({
   }),
   function Item(props) {
     return (
-      <div className="item-row job-row">
-        <div className="item-column">
-          <a className="item-link"
-             href={`/jobs/${props.job.id}/edit`}>{props.job.job_name}</a>
-        </div>
-        <div className="item-column">
+      <Table.Row>
+        <Table.Cell>
+          <a
+            className="item-link"
+            href={`/jobs/${props.job.id}/edit`}
+          >
+            {props.job.job_name}
+          </a>
+        </Table.Cell>
+        <Table.Cell>
           {props.job.initial_spec_state}
-        </div>
-        <div className="item-column">
+        </Table.Cell>
+        <Table.Cell>
           {props.job.url}
-        </div>
-      </div>
-
+        </Table.Cell>
+      </Table.Row>
     )
   }
 )

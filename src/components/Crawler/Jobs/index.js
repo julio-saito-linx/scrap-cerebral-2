@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'cerebral/react';
 import jobs_list from '../../../computed/jobs_list';
 import JobItem from './JobItem/index';
+import BigLoading from '../../BigLoading/index';
+import { Table, Segment } from 'semantic-ui-react';
 require('./index.css');
 require('../../shared_styles/loading_pulse.css');
 
@@ -12,16 +14,31 @@ export default connect(
   },
   {},
   class Jobs extends Component {
+    // <div className="loading-pulse"></div>
     render() {
       return (
         <section id="jobs">
           <h1>Jobs</h1>
           {this.props.is_loading ? (
-            <div className="loading-pulse"></div>
+            <BigLoading />
           ) : (
-            this.props.jobs_list.map((key) => (
-              <JobItem key={key} itemKey={key} job={this.props.jobs && this.props.jobs[ key ]}/>
-            ))
+            <Segment id="jobs-segment">
+              <Table celled fixed singleLine>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Initial state</Table.HeaderCell>
+                    <Table.HeaderCell>URL</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                  {this.props.jobs_list.map((key) => (
+                    <JobItem key={key} itemKey={key} job={this.props.jobs && this.props.jobs[ key ]}/>
+                  ))}
+                </Table.Body>
+              </Table>
+            </Segment>
           )}
         </section>
       );

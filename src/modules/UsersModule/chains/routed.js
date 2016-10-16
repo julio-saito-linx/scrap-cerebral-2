@@ -8,6 +8,7 @@ const routed = [
   when('state:users.is_logged'), {
     true: [],
     false: [
+      set('state:users.is_loading', true),
       ...login,
       ...get_users_list,
     ]

@@ -64,6 +64,7 @@
     "lodash": "^4.16.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "semantic-ui-react": "^0.56.1",
     "tcp-ping": "^0.1.1",
     "winston": "^2.2.0",
     "winston-logstash": "^0.2.11"

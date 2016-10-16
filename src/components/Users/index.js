@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'cerebral/react';
-import users_list from '../../computed/users_list'
-import UserItem from './UserItem/index'
+import users_list from '../../computed/users_list';
+import UserItem from './UserItem/index';
+import BigLoading from '../BigLoading/index';
 
 require('./index.css');
 require('../shared_styles/loading_pulse.css');
@@ -18,10 +19,10 @@ export default connect(
         <section id="users">
           <h1>Users</h1>
           {this.props.is_loading ? (
-            <div className="loading-pulse"></div>
+            <BigLoading/>
           ) : (
             this.props.users_list.map((key) => (
-              <UserItem key={key} itemKey={key} user={this.props.users && this.props.users[key]}/>
+              <UserItem key={key} itemKey={key} user={this.props.users && this.props.users[ key ]}/>
             ))
           )}
         </section>
