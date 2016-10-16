@@ -7,7 +7,7 @@ import firebase_merge_item from '../../../shared_actions/firebase/firebase_merge
 import firebase_remove_item from '../../../shared_actions/firebase/firebase_remove_item';
 import update_field from '../../../shared_actions/components/update_field';
 import { set } from 'cerebral/operators';
-import { redirect } from 'cerebral-router';
+import { redirect, redirectToSignal } from 'cerebral-router';
 import __ll from '../../../utils/__ll';
 
 function firebase_save_task_new_job({ state, path, firebase }) {
@@ -29,7 +29,7 @@ export default module => ({
   state: {
     current_job: {},
     list: {},
-    list_limit: 10,
+    list_limit: 50,
     is_loading: false,
     is_loaded: false,
 
@@ -38,6 +38,8 @@ export default module => ({
       initial_spec_state: '',
       url: ''
     },
+
+    selected_job: null,
   },
   routes: {
     '/': 'routed',
@@ -54,9 +56,6 @@ export default module => ({
 
     fieldChanged: [ update_field ],
     saveClicked: [
-      function (context) {
-        __ll(context);
-      },
       firebase_save_task_new_job, {
         success: [
           set('state:jobs.saved', true),
@@ -67,6 +66,15 @@ export default module => ({
           set('state:jobs.error', 'input:error'),
         ],
       }
+    ],
+
+    jobSelected: [
+      set('state:jobs.selected_job', 'input:job'),
+      function ({state, router}) {
+        router.redirectToSignal('jobs.routed_job_edit', {
+          id: state.get('jobs.selected_job.id')
+        });
+      },
     ],
   },
 })

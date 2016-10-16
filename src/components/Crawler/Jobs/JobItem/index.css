@@ -1,3 +1,11 @@
 .job-row {
   max-width: 432px;
 }
+
+.delete_button_soft_red {
+  color: #976666 !important;
+}
+
+.clickable {
+  cursor: pointer;
+}

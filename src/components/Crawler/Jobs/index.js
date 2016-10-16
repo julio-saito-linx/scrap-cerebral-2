@@ -23,12 +23,13 @@ export default connect(
             <BigLoading />
           ) : (
             <Segment id="jobs-segment">
-              <Table celled fixed singleLine>
-                <Table.Header>
+              <Table unstackable celled compact definition>
+                <Table.Header fullWidth>
                   <Table.Row>
                     <Table.HeaderCell>Name</Table.HeaderCell>
                     <Table.HeaderCell>Initial state</Table.HeaderCell>
                     <Table.HeaderCell>URL</Table.HeaderCell>
+                    <Table.HeaderCell />
                   </Table.Row>
                 </Table.Header>
 
