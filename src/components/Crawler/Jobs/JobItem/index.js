@@ -12,7 +12,7 @@ export default connect((props) => ({
       <div className="item-row job-row">
         <div className="item-column">
           <a className="item-link"
-             href={`/crawler/jobs/${props.job.id}`}>{props.job.job_name}</a>
+             href={`/jobs/${props.job.id}/edit`}>{props.job.job_name}</a>
         </div>
         <div className="item-column">
           {props.job.initial_spec_state}

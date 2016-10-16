@@ -7,7 +7,11 @@
 ####Install:
 
 ```shell
-npm i
+yarn
+# or npm install
+
+# edit your .env file
+
 ./scripts/start-all.sh
 ```
 
@@ -18,10 +22,10 @@ npm i
 #### Site
 
 - [cerebral 2](http://cerebral.github.io/cerebral-website)
-- [cerebral-module-router](cerebral-module-router)
+- [cerebral-module-router](http://cerebral.github.io/cerebral-module-router/index.html#_index_d_.router.redirect)
 - [cerebral-provider-firebase](https://github.com/cerebral/cerebral-provider-firebase)
 - [firebase.database](https://firebase.google.com/docs/reference/node/firebase.database.Reference)
-- [Storybooks.io](https://storybooks.io/)
+- [storybooks.io](https://storybooks.io/)
 - [create-react-app](https://github.com/facebookincubator/create-react-app)
 
 #### Server

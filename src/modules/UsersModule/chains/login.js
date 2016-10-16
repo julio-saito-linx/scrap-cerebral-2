@@ -4,7 +4,6 @@ import firebase_login_with_facebook from '../actions/firebase_login_with_faceboo
 import firebase_save_user from '../actions/firebase_save_user';
 
 const login = [
-  set('state:users.is_loading', true),
   firebase_get_current_user, {
     success: [
       set('state:users.current_user', 'input:user')

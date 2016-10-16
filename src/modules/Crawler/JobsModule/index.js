@@ -1,12 +1,13 @@
 // chains
 import routed from './chains/routed';
-import routed_job_detail from './chains/routed_job_detail';
-import routed_job_create from './chains/routed_job_create';
+import routed_jobs_add from './chains/routed_jobs_add';
+import routed_job_edit from './chains/routed_jobs_edit';
 // shared actions
 import firebase_merge_item from '../../../shared_actions/firebase/firebase_merge_item';
 import firebase_remove_item from '../../../shared_actions/firebase/firebase_remove_item';
 import update_field from '../../../shared_actions/components/update_field';
 import { set } from 'cerebral/operators';
+import { redirect } from 'cerebral-router';
 
 function firebase_save_task_new_job({ state, path, firebase }) {
   return firebase.task('spec__create_job', {
@@ -34,18 +35,18 @@ export default module => ({
     new_job: {
       job_name: '',
       initial_spec_state: '',
-      url: '',
+      url: ''
     },
   },
   routes: {
     '/': 'routed',
-    '/create': 'routed_job_create',
-    '/:id': 'routed_job_detail',
+    '/add': 'routed_jobs_add',
+    '/:id/edit': 'routed_job_edit',
   },
   signals: {
     routed,
-    routed_job_detail,
-    routed_job_create,
+    routed_jobs_add,
+    routed_job_edit,
     jobsChildAdded: [ firebase_merge_item('jobs.list') ],
     jobsChildChanged: [ firebase_merge_item('jobs.list') ],
     jobsChildRemoved: [ firebase_remove_item('jobs.list') ],
@@ -55,6 +56,8 @@ export default module => ({
       firebase_save_task_new_job, {
         success: [
           set('state:jobs.saved', true),
+          redirect('/jobs'),
+          // set('state:currentPage', 'jobs'),
         ],
         error: [
           set('state:jobs.error', 'input:error'),

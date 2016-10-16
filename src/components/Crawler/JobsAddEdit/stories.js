@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import JobsCreate from './index';
+import JobsAddEdit from './index';
 
-storiesOf('JobsCreate', module)
+storiesOf('JobsAddEdit', module)
   .add('form', () => (
-    <JobsCreate
+    <JobsAddEdit
       new_job={{
         job_name: 'Job Name',
         initial_spec_state: 'initial_spec_state',
