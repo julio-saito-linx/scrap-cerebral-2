@@ -1,4 +1,5 @@
 const winston = require('winston');
+const _ = require('lodash');
 require('winston-logstash');
 const resolvePath = require('../utils/resolvePath');
 const tcpp = require('tcp-ping');

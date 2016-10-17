@@ -35,6 +35,17 @@ yarn
 - [elasticsearch](https://www.elastic.co/products/elasticsearch)
 - [kibana](https://www.elastic.co/products/kibana)
 
+
+# naming conventions
+
+#### TODO:
+
+- `signals_underline_style`
+- `actions_underline_style`
+- `state_underline_style`
+- `_onEventInComponent`
+- `class ClassReactComponent extends Component`
+
 # personal reffs
 
 ```shell

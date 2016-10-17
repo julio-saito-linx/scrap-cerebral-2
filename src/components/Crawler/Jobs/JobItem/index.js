@@ -10,8 +10,14 @@ export default connect((props) => ({
   }),
   {
     jobSelected: 'jobs.jobSelected',
+    jobRemoveClicked: 'jobs.jobRemoveClicked',
   },
   function Item(props) {
+    const _removeJob = (ev) => {
+      ev.stopPropagation();
+      props.jobRemoveClicked({id: props.job.id});
+    };
+
     return (
       <Table.Row
         className="clickable"
@@ -32,6 +38,7 @@ export default connect((props) => ({
             content="del"
             size="mini"
             className="delete_button_soft_red"
+            onClick={_removeJob}
           />
         </Table.Cell>
       </Table.Row>

@@ -20,7 +20,11 @@ export default connect({
     };
 
     render() {
-      const job = this.props.selected_job || this.props.new_job;
+      const job = this.props.selected_job || this.props.new_job || {
+          job_name: '',
+          initial_spec_state: '',
+          url: '',
+        };
       const job_switcher = this.props.selected_job ? 'jobs.selected_job' : 'jobs.new_job';
       return (
         <section id="jobs_add_edit">

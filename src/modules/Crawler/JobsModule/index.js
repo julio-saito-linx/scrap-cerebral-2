@@ -7,16 +7,22 @@ import firebase_merge_item from '../../../shared_actions/firebase/firebase_merge
 import firebase_remove_item from '../../../shared_actions/firebase/firebase_remove_item';
 import update_field from '../../../shared_actions/components/update_field';
 import { set } from 'cerebral/operators';
-import { redirect, redirectToSignal } from 'cerebral-router';
-import __ll from '../../../utils/__ll';
+import { redirect } from 'cerebral-router';
+import set_selected_job from './actions/set_selected_job';
 
-function firebase_save_task_new_job({ state, path, firebase }) {
-  return firebase.task('spec__create_job', {
-    // uid: state.get('users.current_user.uid'),
-    job_name: state.get('jobs.new_job.job_name'),
-    initial_spec_state: state.get('jobs.new_job.initial_spec_state'),
-    url: state.get('jobs.new_job.url'),
-  })
+function firebase_save_job({ state, path, firebase }) {
+  const new_job = state.get('jobs.new_job');
+  const selected_job = state.get('jobs.selected_job');
+
+  // TODO: add uid
+  let paylod;
+  if (selected_job) {
+    paylod = state.get('jobs.selected_job');
+  } else {
+    paylod = state.get('jobs.new_job')
+  }
+
+  return firebase.task('spec__job_update', paylod)
     .then((result) => {
       return path.success();
     })
@@ -24,6 +30,20 @@ function firebase_save_task_new_job({ state, path, firebase }) {
       return path.error();
     });
 }
+
+function fb_task_job_remove({ state, path, firebase }) {
+  return firebase.task('spec__job_remove', {
+    id: state.get('jobs.selected_job.id'),
+  })
+    .then(path.success)
+    .catch(path.error);
+}
+
+const EMPTY_JOB = {
+  job_name: '',
+  initial_spec_state: '',
+  url: ''
+};
 
 export default module => ({
   state: {
@@ -33,12 +53,7 @@ export default module => ({
     is_loading: false,
     is_loaded: false,
 
-    new_job: {
-      job_name: '',
-      initial_spec_state: '',
-      url: ''
-    },
-
+    new_job: EMPTY_JOB,
     selected_job: null,
   },
   routes: {
@@ -56,11 +71,12 @@ export default module => ({
 
     fieldChanged: [ update_field ],
     saveClicked: [
-      firebase_save_task_new_job, {
+      firebase_save_job, {
         success: [
+          set('state:jobs.new_job', EMPTY_JOB),
+          set('state:jobs.selected_job', null),
           set('state:jobs.saved', true),
           redirect('/jobs'),
-          // set('state:currentPage', 'jobs'),
         ],
         error: [
           set('state:jobs.error', 'input:error'),
@@ -69,12 +85,27 @@ export default module => ({
     ],
 
     jobSelected: [
+      set('state:jobs.new_job', EMPTY_JOB),
       set('state:jobs.selected_job', 'input:job'),
-      function ({state, router}) {
+      function ({ state, router }) {
         router.redirectToSignal('jobs.routed_job_edit', {
           id: state.get('jobs.selected_job.id')
         });
       },
+    ],
+    jobRemoveClicked: [
+      set_selected_job,
+      fb_task_job_remove, {
+        success: [
+          // set('state:jobs.saved', true),
+          // redirect('/jobs'),
+          // set('state:currentPage', 'jobs'),
+        ],
+        error: [
+          set('state:jobs.error', 'JOB ERROR'),
+        ],
+      },
+      set('state:jobs.selected_job', null),
     ],
   },
 })

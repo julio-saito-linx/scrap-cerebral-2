@@ -3,10 +3,12 @@
     ".read": "auth != null",
     ".write": "auth != null",
     "users": {
+      ".indexOn": "updated_at",
       ".read": "auth != null",
       ".write": "auth != null"
     },
     "jobs": {
+      ".indexOn": "updated_at",
       ".read": "auth != null",
       ".write": "auth != null",
     },
