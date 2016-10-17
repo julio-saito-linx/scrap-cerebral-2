@@ -9,6 +9,7 @@ import Users from '../Users';
 import UserDetail from '../UserDetail';
 import Jobs from '../Crawler/Jobs';
 import JobsAddEdit from '../Crawler/JobsAddEdit';
+import QueueErrors from '../QueueErrors/index';
 
 const pages = {
   home: Home,
@@ -19,6 +20,7 @@ const pages = {
   // crawler
   jobs: Jobs,
   jobs_add_edit: JobsAddEdit,
+  queue_errors: QueueErrors,
 };
 
 export default connect(
@@ -63,6 +65,9 @@ export default connect(
             </li>
             <li>
               {this._render_route_link('add new job', '/jobs/add')}
+            </li>
+            <li>
+              {this._render_route_link('queue_errors', '/queue_errors')}
             </li>
           </ul>
 

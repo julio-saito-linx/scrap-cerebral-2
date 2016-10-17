@@ -5,7 +5,6 @@ import JobItem from './JobItem/index';
 import BigLoading from '../../BigLoading/index';
 import { Table, Segment } from 'semantic-ui-react';
 require('./index.css');
-require('../../shared_styles/loading_pulse.css');
 
 export default connect(
   {
@@ -14,7 +13,6 @@ export default connect(
   },
   {},
   class Jobs extends Component {
-    // <div className="loading-pulse"></div>
     render() {
       return (
         <section id="jobs">
@@ -23,7 +21,7 @@ export default connect(
             <BigLoading />
           ) : (
             <Segment id="jobs-segment">
-              <Table unstackable celled compact definition>
+              <Table unstackable celled definition>
                 <Table.Header fullWidth>
                   <Table.Row>
                     <Table.HeaderCell>Name</Table.HeaderCell>

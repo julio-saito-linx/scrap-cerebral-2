@@ -11,24 +11,19 @@ import { redirect } from 'cerebral-router';
 import set_selected_job from './actions/set_selected_job';
 
 function firebase_save_job({ state, path, firebase }) {
-  const new_job = state.get('jobs.new_job');
-  const selected_job = state.get('jobs.selected_job');
+  let paylod;
 
   // TODO: add uid
-  let paylod;
+  const selected_job = state.get('jobs.selected_job');
   if (selected_job) {
-    paylod = state.get('jobs.selected_job');
+    paylod = selected_job;
   } else {
     paylod = state.get('jobs.new_job')
   }
 
   return firebase.task('spec__job_update', paylod)
-    .then((result) => {
-      return path.success();
-    })
-    .catch((error) => {
-      return path.error();
-    });
+    .then(path.success)
+    .catch(path.error);
 }
 
 function fb_task_job_remove({ state, path, firebase }) {

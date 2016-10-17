@@ -30,8 +30,6 @@ module.exports = class job_update {
   }
 
   static task(data, progress, resolve, reject) {
-    const queue_ref = firebase.database().ref('queue');
-
     let job_id;
     let data_to_save;
 

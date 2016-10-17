@@ -5,7 +5,6 @@ import UserItem from './UserItem/index';
 import BigLoading from '../BigLoading/index';
 
 require('./index.css');
-require('../shared_styles/loading_pulse.css');
 
 export default connect(
   {
