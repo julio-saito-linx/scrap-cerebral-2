@@ -6,6 +6,7 @@ import HomeModule from './modules/HomeModule';
 import DisplayMyNameModule from './modules/DisplayMyNameModule';
 import UsersModule from './modules/UsersModule';
 import JobsModule from './modules/Crawler/JobsModule';
+import QueueErrors from './modules/QueueErrors';
 
 const controller = Controller({
   devtools: process.env.NODE_ENV === 'production' ? null : Devtools(),
@@ -17,6 +18,7 @@ const controller = Controller({
 
     //crawler
     jobs: JobsModule,
+    queue_errors: QueueErrors,
   },
 
   state: {

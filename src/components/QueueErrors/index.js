@@ -9,7 +9,8 @@ require('./index.css');
 export default connect(
   {
     queues_keys: queue_list(),
-    is_loading: 'queue.is_loading',
+    is_loading: 'queue_errors.is_loading',
+    selected_task: 'queue_errors.selected_task',
   },
   {},
   class QueueErrors extends Component {
@@ -37,7 +38,7 @@ export default connect(
                 </Table.Body>
               </Table>
               <pre>
-                {this.props.selected._error_details.error_stack}
+                {this.props.selected_task && this.props.selected_task._error_details && this.props.selected_task._error_details.error_stack}
               </pre>
             </Segment>
           )}

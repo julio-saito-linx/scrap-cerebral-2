@@ -6,11 +6,11 @@ require('../../shared_styles/table.css');
 require('./index.css');
 
 export default connect((props) => ({
-    queue: `queues.list.${props.itemKey}`,
+    queue: `queue_errors.list.${props.itemKey}`,
   }),
   {
-    queueSelected: 'queues.queueSelected',
-    queueRemoveClicked: 'queues.queueRemoveClicked',
+    taskSelected: 'queue_errors.taskSelected',
+    queueRemoveClicked: 'queue_errors.queueRemoveClicked',
   },
   function Item(props) {
     const _removeJob = (ev) => {
@@ -21,7 +21,7 @@ export default connect((props) => ({
     return (
       <Table.Row
         className="clickable"
-        onClick={() => props.queueSelected({queue: props.queue})}
+        onClick={() => props.taskSelected({selected_task: props.queue})}
       >
         <Table.Cell>
           {props.queue._error_details.previous_state}
