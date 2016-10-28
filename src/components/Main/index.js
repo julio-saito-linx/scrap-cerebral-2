@@ -41,7 +41,7 @@ export default connect(
       const Page = pages[ this.props.currentPage ];
       return (
         <div className="App">
-          <div className="App-header">
+          <div className="app-header">
             <div className="header_init">
               <img src={cerebral_logo} className="cerebral_logo" alt="cerebral logo"/>
               <h2>Scrap Cerebral 2</h2>
@@ -71,7 +71,9 @@ export default connect(
             </li>
           </ul>
 
-          <Page />
+          <section className="main-container">
+            <Page />
+          </section>
 
         </div>
 

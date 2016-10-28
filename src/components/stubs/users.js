@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 export const user_stub = {
   accessToken: "EAAH9HiYlvGQBAOw68dr1ZBHDsk7g0eGl0SPcAcA803OyWxIPasrNaOv7pQa9F6rU36g9IlGzZAkJ47dwVkseOXuozHTNp1SiJJwO7ZBoOgsuJQwkfJMr81K2NUukZA23zGKoZBS2HiLv9GStLZBuAYNaYxd56iACEZD",
