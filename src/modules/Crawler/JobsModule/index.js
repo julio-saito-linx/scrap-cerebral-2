@@ -1,17 +1,21 @@
+import { set } from 'cerebral/operators';
+import { redirect } from 'cerebral-router';
+
 // chains
 import routed from './chains/routed';
 import routed_jobs_add from './chains/routed_jobs_add';
 import routed_job_edit from './chains/routed_jobs_edit';
+
 // shared actions
 import firebase_merge_item from '../../../shared_actions/firebase/firebase_merge_item';
 import firebase_remove_item from '../../../shared_actions/firebase/firebase_remove_item';
 import update_field from '../../../shared_actions/components/update_field';
-import { set } from 'cerebral/operators';
-import { redirect } from 'cerebral-router';
+import get_payload_from_state from '../../../shared_actions/firebase/get_payload_from_state';
+import firebase_save_task from '../../../shared_actions/firebase/firebase_save_task';
+
+// local actions
 import set_selected_job from './actions/set_selected_job';
 import get_payload_job from './actions/get_payload_job';
-import get_payload_job_id from './actions/get_payload_job_id';
-import firebase_save_task from './actions/firebase_save_task';
 
 const EMPTY_JOB = {
   job_name: '',
@@ -61,7 +65,7 @@ export default module => ({
 
     jobRemoveClicked: [
       set_selected_job,
-      get_payload_job_id,
+      get_payload_from_state('jobs.selected_job.id'),
       firebase_save_task('spec__job_remove'), {
         success: [
           // set('state:jobs.saved', true),
