@@ -29,9 +29,10 @@ module.exports = class job_update {
     };
   }
 
-  static task(data, progress, resolve, reject) {
+  static task(payload, progress, resolve, reject) {
     let job_id;
     let data_to_save;
+    const data = payload.data;
 
     const is_inserting = !data.id;
     if (is_inserting) {

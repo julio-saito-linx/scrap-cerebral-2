@@ -17,11 +17,16 @@ export default connect((props) => ({
   function Item(props) {
     const _removeJob = (ev) => {
       ev.stopPropagation();
-      props.queueRemoveClicked({id: props.task.id});
+      props.queueRemoveClicked({key: props.itemKey});
     };
+
+    const _table_row_className = () => {
+      return ['clickable', props.selected_task_key === props.itemKey ? 'row-selected' : ''].join(' ')
+    };
+
     return (
       <Table.Row
-        className={['clickable', props.selected_task_key === props.itemKey ? 'row-selected' : '']}
+        className={_table_row_className()}
         onClick={() => props.taskSelected({selected_task_key: props.itemKey})}
       >
         <Table.Cell>

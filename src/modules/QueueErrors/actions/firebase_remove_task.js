@@ -1,15 +1,12 @@
 import firebase from 'firebase';
 
 export default function firebase_remove_task({ input, path }) {
-  // User info
-  if (!input.user) {
+  if (!input.key) {
     return path.error();
-    // throw new Error('Cannot find user on input');
   }
 
-  const key = input.user.uid || firebase.database().ref().child('users').push().key;
   const updates = {};
-  updates[ '/users/' + key ] = input.user;
+  updates[ '/users/' + input.key ] = null;
 
   // Send to firebase
   return firebase.database().ref().update(updates)

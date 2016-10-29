@@ -28,7 +28,7 @@ module.exports = class job_remove {
     };
   }
 
-  static task(data, progress, resolve, reject) {
+  static task(payload, progress, resolve, reject) {
     const queue_ref = firebase.database().ref('queue');
 
     // logger -----------
@@ -36,12 +36,12 @@ module.exports = class job_remove {
       __filename,
       name: 'job_remove',
       state: 'starting',
-      data: _.merge({}, data, {id: data.id}),
+      payload,
     });
     // ------------------
 
     const updates = {};
-    updates[ `/jobs/${data.id}` ] = null;
+    updates[ `/jobs/${payload.data}` ] = null;
 
     // Send to firebase
     return firebase.database().ref().update(updates)
@@ -51,7 +51,7 @@ module.exports = class job_remove {
           __filename,
           name: 'job_remove',
           state: 'finished',
-          data,
+          payload,
           res
         });
         // ------------------
@@ -59,11 +59,11 @@ module.exports = class job_remove {
       })
       .catch((err) => {
         // logger -----------
-        job_update.logger.debug('TASK', {
+        job_remove.logger.debug('TASK', {
           __filename,
           name: 'job_remove',
           state: 'error',
-          data,
+          payload,
           err,
         });
         // ------------------

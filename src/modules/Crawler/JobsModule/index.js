@@ -10,28 +10,27 @@ import { set } from 'cerebral/operators';
 import { redirect } from 'cerebral-router';
 import set_selected_job from './actions/set_selected_job';
 
-function firebase_save_job({ state, path, firebase }) {
-  let paylod;
-
-  // TODO: add uid
+function get_payload_job({ state }) {
   const selected_job = state.get('jobs.selected_job');
   if (selected_job) {
-    paylod = selected_job;
+    return { payload: selected_job };
   } else {
-    paylod = state.get('jobs.new_job')
+    return { payload: state.get('jobs.new_job') };
   }
-
-  return firebase.task('spec__job_update', paylod)
-    .then(path.success)
-    .catch(path.error);
 }
 
-function fb_task_job_remove({ state, path, firebase }) {
-  return firebase.task('spec__job_remove', {
-    id: state.get('jobs.selected_job.id'),
-  })
-    .then(path.success)
-    .catch(path.error);
+function get_payload_job_id({ state }) {
+  return {
+    payload: state.get('jobs.selected_job.id'),
+  };
+}
+
+function firebase_save_task(job_name) {
+  return ({ state, path, firebase, input }) => {
+    return firebase.task(job_name, { data: input.payload })
+      .then(path.success)
+      .catch(path.error);
+  }
 }
 
 const EMPTY_JOB = {
@@ -66,7 +65,8 @@ export default module => ({
 
     fieldChanged: [ update_field ],
     saveClicked: [
-      firebase_save_job, {
+      get_payload_job,
+      firebase_save_task('spec__job_update'), {
         success: [
           set('state:jobs.new_job', EMPTY_JOB),
           set('state:jobs.selected_job', null),
@@ -79,18 +79,10 @@ export default module => ({
       }
     ],
 
-    jobSelected: [
-      set('state:jobs.new_job', EMPTY_JOB),
-      set('state:jobs.selected_job', 'input:job'),
-      function ({ state, router }) {
-        router.redirectToSignal('jobs.routed_job_edit', {
-          id: state.get('jobs.selected_job.id')
-        });
-      },
-    ],
     jobRemoveClicked: [
       set_selected_job,
-      fb_task_job_remove, {
+      get_payload_job_id,
+      firebase_save_task('spec__job_remove'), {
         success: [
           // set('state:jobs.saved', true),
           // redirect('/jobs'),
@@ -101,6 +93,16 @@ export default module => ({
         ],
       },
       set('state:jobs.selected_job', null),
+    ],
+
+    jobSelected: [
+      set('state:jobs.new_job', EMPTY_JOB),
+      set('state:jobs.selected_job', 'input:job'),
+      function ({ state, router }) {
+        router.redirectToSignal('jobs.routed_job_edit', {
+          id: state.get('jobs.selected_job.id')
+        });
+      },
     ],
   },
 })
