@@ -9,29 +9,9 @@ import update_field from '../../../shared_actions/components/update_field';
 import { set } from 'cerebral/operators';
 import { redirect } from 'cerebral-router';
 import set_selected_job from './actions/set_selected_job';
-
-function get_payload_job({ state }) {
-  const selected_job = state.get('jobs.selected_job');
-  if (selected_job) {
-    return { payload: selected_job };
-  } else {
-    return { payload: state.get('jobs.new_job') };
-  }
-}
-
-function get_payload_job_id({ state }) {
-  return {
-    payload: state.get('jobs.selected_job.id'),
-  };
-}
-
-function firebase_save_task(job_name) {
-  return ({ state, path, firebase, input }) => {
-    return firebase.task(job_name, { data: input.payload })
-      .then(path.success)
-      .catch(path.error);
-  }
-}
+import get_payload_job from './actions/get_payload_job';
+import get_payload_job_id from './actions/get_payload_job_id';
+import firebase_save_task from './actions/firebase_save_task';
 
 const EMPTY_JOB = {
   job_name: '',
