@@ -1,14 +1,14 @@
-function firebase_listen(collection_name) {
+export default function firebase_listen(module_name, collection_name) {
   return function ({ firebase }) {
-    firebase.onChildAdded(collection_name, `${collection_name}.${collection_name}ChildAdded`,
+    const signal_name = collection_name.replace('.', '_');
+
+    firebase.onChildAdded(collection_name, `${module_name}.${signal_name}_ChildAdded`,
       {
         orderByChild: 'updated_at',
         startAt: (new Date()).getTime(),
       }
     );
-    firebase.onChildRemoved(collection_name, `${collection_name}.${collection_name}ChildRemoved`, {});
-    firebase.onChildChanged(collection_name, `${collection_name}.${collection_name}ChildChanged`, {});
+    firebase.onChildRemoved(collection_name, `${module_name}.${signal_name}_ChildRemoved`, {});
+    firebase.onChildChanged(collection_name, `${module_name}.${signal_name}_ChildChanged`, {});
   }
 }
-
-export default firebase_listen;

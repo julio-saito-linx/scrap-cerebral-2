@@ -30,10 +30,10 @@ export default connect((props) => ({
         onClick={() => props.taskSelected({selected_task_key: props.itemKey})}
       >
         <Table.Cell>
-          {props.task._error_details.previous_state}
+          {props.task._error_details && props.task._error_details.previous_state}
         </Table.Cell>
         <Table.Cell>
-          {props.task._error_details.error}
+          {props.task._error_details && props.task._error_details.error}
         </Table.Cell>
         <Table.Cell>
           {moment(props.task._state_changed).format('YYYY-MM-DD HH:mm:SS') }

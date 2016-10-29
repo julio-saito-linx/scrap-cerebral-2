@@ -21,10 +21,10 @@ export default module => ({
   },
   signals: {
     routed,
-    taskSelected: [set('state:queue_errors.selected_task_key', 'input:selected_task_key')],
-    queueRemoveClicked: [firebase_remove_task],
-    tasksChildAdded: [ firebase_merge_item('queue_errors.list') ],
-    tasksChildChanged: [ firebase_merge_item('queue_errors.list') ],
-    tasksChildRemoved: [ firebase_remove_item('queue_errors.list') ],
+    taskSelected: [ set('state:queue_errors.selected_task_key', 'input:selected_task_key') ],
+    queueRemoveClicked: [ firebase_remove_task ],
+    queue_tasks_ChildAdded: [ firebase_merge_item('queue_errors.list') ],
+    queue_tasks_ChildChanged: [ firebase_merge_item('queue_errors.list') ],
+    queue_tasks_ChildRemoved: [ firebase_remove_item('queue_errors.list') ],
   },
 })

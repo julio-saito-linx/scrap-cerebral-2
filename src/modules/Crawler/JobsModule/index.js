@@ -43,9 +43,9 @@ export default module => ({
     routed,
     routed_jobs_add,
     routed_job_edit,
-    jobsChildAdded: [ firebase_merge_item('jobs.list') ],
-    jobsChildChanged: [ firebase_merge_item('jobs.list') ],
-    jobsChildRemoved: [ firebase_remove_item('jobs.list') ],
+    jobs_ChildAdded: [ firebase_merge_item('jobs.list') ],
+    jobs_ChildChanged: [ firebase_merge_item('jobs.list') ],
+    jobs_ChildRemoved: [ firebase_remove_item('jobs.list') ],
 
     fieldChanged: [ update_field ],
     saveClicked: [

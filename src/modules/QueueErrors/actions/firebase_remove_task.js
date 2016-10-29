@@ -6,7 +6,7 @@ export default function firebase_remove_task({ input, path }) {
   }
 
   const updates = {};
-  updates[ '/users/' + input.key ] = null;
+  updates[ `/queue/tasks/${input.key}` ] = null;
 
   // Send to firebase
   return firebase.database().ref().update(updates)

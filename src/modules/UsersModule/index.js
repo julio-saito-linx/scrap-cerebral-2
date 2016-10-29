@@ -20,8 +20,8 @@ export default module => ({
   signals: {
     routed,
     routed_user_detail,
-    usersChildAdded: [ firebase_merge_item('users.list') ],
-    usersChildChanged: [ firebase_merge_item('users.list') ],
-    usersChildRemoved: [ firebase_remove_item('users.list') ],
+    users_ChildAdded: [ firebase_merge_item('users.list') ],
+    users_ChildChanged: [ firebase_merge_item('users.list') ],
+    users_ChildRemoved: [ firebase_remove_item('users.list') ],
   },
 })
