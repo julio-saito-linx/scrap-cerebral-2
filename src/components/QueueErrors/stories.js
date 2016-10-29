@@ -9,8 +9,8 @@ storiesOf('Queue Errors', module)
     <QueueErrors
       is_loading={false}
       queues_keys={_.keys(error_task_list_stub)}
-      queues_list={error_task_list_stub}
-      selected_task={error_task_stub}
+      list={error_task_list_stub}
+      selected_task_key="task_1"
     />
   ))
   .add('is_loading === true', () => (

@@ -10,10 +10,21 @@ export default connect(
   {
     queues_keys: queue_list(),
     is_loading: 'queue_errors.is_loading',
-    selected_task: 'queue_errors.selected_task',
+    selected_task_key: 'queue_errors.selected_task_key',
+    list: 'queue_errors.list',
   },
   {},
   class QueueErrors extends Component {
+
+    _get_error_stack() {
+      const selectedTaskKey = this.props.selected_task_key;
+      const errorDetails = selectedTaskKey && this.props.list[ selectedTaskKey ]._error_details;
+      if (selectedTaskKey && errorDetails) {
+        return errorDetails.error_stack;
+      }
+      return null;
+    }
+
     render() {
       return (
         <section id="queue">
@@ -27,18 +38,24 @@ export default connect(
                   <Table.Row>
                     <Table.HeaderCell>previous_state</Table.HeaderCell>
                     <Table.HeaderCell>error</Table.HeaderCell>
-                    <Table.HeaderCell />
+                    <Table.HeaderCell>date</Table.HeaderCell>
+                    <Table.HeaderCell className="th-actions"/>
                   </Table.Row>
                 </Table.Header>
 
                 <Table.Body>
                   {this.props.queues_keys.map((key) => (
-                    <QueueItem key={key} itemKey={key} queue={this.props.queues_list && this.props.queues_list[ key ]}/>
+                    <QueueItem
+                      key={key}
+                      itemKey={key}
+                      task={this.props.list && this.props.list[ key ]}
+                      selected_task_key={this.props.selected_task_key}
+                    />
                   ))}
                 </Table.Body>
               </Table>
-              <pre>
-                {this.props.selected_task && this.props.selected_task._error_details && this.props.selected_task._error_details.error_stack}
+              <pre className="pre-error-stack">
+                {this._get_error_stack()}
               </pre>
             </Segment>
           )}

@@ -1,5 +1,4 @@
 export const error_task_stub = {
-  id: "-KUFVJ_lmuTpYicp8AMj",
   _error_details: {
     attempts: 1,
     error: "123",

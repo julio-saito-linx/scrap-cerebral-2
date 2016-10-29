@@ -9,3 +9,7 @@
 .clickable {
   cursor: pointer;
 }
+
+.row-selected {
+  background-color: #ABC7ED;
+}

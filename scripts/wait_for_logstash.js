@@ -16,7 +16,7 @@ const interval_id = setInterval(() => {
       process.stdout.write('.');
     }
 
-    if (count > 40) {
+    if (count > 60) {
       clearInterval(interval_id);
       process.stdout.write('timeout\n');
     }

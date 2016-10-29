@@ -9,7 +9,7 @@ import firebase_remove_task from './actions/firebase_remove_task';
 
 export default module => ({
   state: {
-    selected_task: {},
+    selected_task_key: null,
     list: {},
     list_limit: 10,
     is_loading: false,
@@ -21,7 +21,7 @@ export default module => ({
   },
   signals: {
     routed,
-    taskSelected: [set('state:queue_errors.selected_task', 'input:selected_task')],
+    taskSelected: [set('state:queue_errors.selected_task_key', 'input:selected_task_key')],
     queueRemoveClicked: [firebase_remove_task],
     tasksChildAdded: [ firebase_merge_item('queue_errors.list') ],
     tasksChildChanged: [ firebase_merge_item('queue_errors.list') ],

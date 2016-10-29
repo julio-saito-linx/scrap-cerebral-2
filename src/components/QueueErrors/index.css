@@ -11,3 +11,14 @@
 #jobs-segment td, #jobs-segment th{
   text-align: center;
 }
+
+#queue .th-actions {
+  width: 95px;
+}
+
+#queue .pre-error-stack {
+  padding: 15px;
+  font-size: 12px;
+  background-color: #313131;
+  color: white;
+}
