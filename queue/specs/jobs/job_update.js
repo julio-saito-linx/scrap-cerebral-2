@@ -30,38 +30,31 @@ module.exports = class job_update {
   }
 
   static task(payload, progress, resolve, reject) {
-    let job_id;
-    let data_to_save;
-    const data = payload.data;
-
-    const is_inserting = !data.id;
-    if (is_inserting) {
-      // insert
-      data_to_save = {
-        id: firebase.database().ref('jobs').push().key,
-        created_at: { ".sv": "timestamp" },
-        updated_at: { ".sv": "timestamp" },
-      }
-    } else {
-      // update
-      data_to_save = {
-        id: data.id,
-        updated_at: { ".sv": "timestamp" },
-      }
-    }
-    // add other fields
-    data_to_save = _.merge(data_to_save, data);
-
-    // logger -----------
-    const data_to_log = LoggerUtils.transform_data_avoid_timestamp(data_to_save);
     job_update.logger.debug('TASK', {
       __filename,
       name: 'job_update',
       state: 'starting',
-      data: data_to_log,
+      data: payload,
     });
-    // ------------------
 
+    let data_to_save;
+    const is_inserting = !payload.job.id;
+    if (is_inserting) {
+      // insert
+      data_to_save = {
+        id: firebase.database().ref('jobs').push().key,
+        created_at: payload.created_at,
+        updated_at: payload.updated_at,
+      }
+    } else {
+      // update
+      data_to_save = {
+        id: payload.job.id,
+        updated_at: payload.updated_at,
+      }
+    }
+    // add other fields
+    data_to_save = _.merge({}, payload.job, data_to_save);
 
     const updates = {};
     updates[ `/jobs/${data_to_save.id}` ] = data_to_save;
@@ -74,7 +67,7 @@ module.exports = class job_update {
           __filename,
           name: 'job_update',
           state: 'finished',
-          data: data_to_log,
+          data: payload,
           res,
         });
         // ------------------
@@ -86,7 +79,7 @@ module.exports = class job_update {
           __filename,
           name: 'job_update',
           state: 'error',
-          data: data_to_log,
+          data: payload,
           err,
         });
         // ------------------

@@ -2,13 +2,13 @@ const firebase = require('firebase');
 const Queue = require('firebase-queue');
 const _ = require('lodash');
 
-module.exports = class job_remove {
+module.exports = class spec__task_remove {
   constructor(logger) {
-    job_remove.logger = logger;
+    spec__task_remove.logger = logger;
     this.queue = new Queue(firebase.database().ref('queue'), {
-      specId: 'job_remove',
+      specId: 'spec__task_remove',
       numWorkers: 3
-    }, (...args) => job_remove.task(...args));
+    }, (...args) => spec__task_remove.task(...args));
   }
 
   get queue_instance() {
@@ -16,13 +16,13 @@ module.exports = class job_remove {
   }
 
   static get_name() {
-    return 'job_remove';
+    return 'spec__task_remove';
   }
 
   static spec_obj() {
     return {
-      start_state: 'spec__job_remove',
-      in_progress_state: 'spec__job_remove_in_progress',
+      start_state: 'spec__task_remove',
+      in_progress_state: 'spec__task_remove_in_progress',
       finished_state: null,
       timeout: 10000
     };
@@ -32,24 +32,24 @@ module.exports = class job_remove {
     const queue_ref = firebase.database().ref('queue');
 
     // logger -----------
-    job_remove.logger.debug('TASK', {
+    spec__task_remove.logger.debug('TASK', {
       __filename,
-      name: 'job_remove',
+      name: 'spec__task_remove',
       state: 'starting',
       payload,
     });
     // ------------------
 
     const updates = {};
-    updates[ `/jobs/${payload.job_key}` ] = null;
+    updates[ `/queue/tasks/${payload.task_key}` ] = null;
 
     // Send to firebase
     return firebase.database().ref().update(updates)
       .then((res) => {
         // logger -----------
-        job_remove.logger.debug('TASK', {
+        spec__task_remove.logger.debug('TASK', {
           __filename,
-          name: 'job_remove',
+          name: 'spec__task_remove',
           state: 'finished',
           payload,
           res
@@ -59,9 +59,9 @@ module.exports = class job_remove {
       })
       .catch((err) => {
         // logger -----------
-        job_remove.logger.debug('TASK', {
+        spec__task_remove.logger.debug('TASK', {
           __filename,
-          name: 'job_remove',
+          name: 'spec__task_remove',
           state: 'error',
           payload,
           err,

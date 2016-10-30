@@ -65,7 +65,7 @@ export default module => ({
 
     jobRemoveClicked: [
       set_selected_job,
-      get_payload_from_state('jobs.selected_job.id'),
+      get_payload_from_state('job_key', 'jobs.selected_job.id'),
       firebase_save_task('spec__job_remove'), {
         success: [
           // set('state:jobs.saved', true),

@@ -17,11 +17,27 @@ export default connect((props) => ({
   function Item(props) {
     const _removeJob = (ev) => {
       ev.stopPropagation();
-      props.queueRemoveClicked({key: props.itemKey});
+      props.queueRemoveClicked({selected_task_key: props.itemKey});
     };
 
     const _table_row_className = () => {
       return ['clickable', props.selected_task_key === props.itemKey ? 'row-selected' : ''].join(' ')
+    };
+
+    const _get_task_name = () => {
+      if (props.task._error_details) {
+        return props.task._error_details.previous_state;
+      } else {
+        return props.task._state;
+      }
+    };
+
+    const _get_task_value = () => {
+      if (props.task._error_details) {
+        return props.task._error_details.error;
+      } else {
+        return props.task.data;
+      }
     };
 
     return (
@@ -30,13 +46,13 @@ export default connect((props) => ({
         onClick={() => props.taskSelected({selected_task_key: props.itemKey})}
       >
         <Table.Cell>
-          {props.task._error_details && props.task._error_details.previous_state}
+          {_get_task_name()}
         </Table.Cell>
         <Table.Cell>
-          {props.task._error_details && props.task._error_details.error}
+          {_get_task_value()}
         </Table.Cell>
         <Table.Cell>
-          {moment(props.task._state_changed).format('YYYY-MM-DD HH:mm:SS') }
+          {moment(props.task._state_changed).format('YYYY-MM-DD HH:mm:ss') }
         </Table.Cell>
         <Table.Cell>
           <Button

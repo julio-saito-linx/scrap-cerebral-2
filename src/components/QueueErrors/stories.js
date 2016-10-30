@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import QueueErrors from './index';
-import { error_task_list_stub, error_task_stub } from '../stubs/queue';
+import { error_task_list_stub } from '../stubs/queue';
 
 storiesOf('Queue Errors', module)
   .add('3 queue', () => (

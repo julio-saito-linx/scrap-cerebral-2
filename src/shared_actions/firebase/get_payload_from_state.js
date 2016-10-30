@@ -1,8 +1,8 @@
-export default function get_payload_job_id(state_path) {
+export default function get_payload_job_id(key_name, state_path) {
   return function ({ state }) {
-    return {
-      payload: state.get(state_path),
-    };
+    let payload = {};
+    payload[key_name] =  state.get(state_path);
+    return { payload };
   }
 }
 
