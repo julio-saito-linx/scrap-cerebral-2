@@ -1,12 +1,12 @@
 import * as _ from 'lodash';
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import QueueErrors from './index';
+import QueueTasks from './index';
 import { error_task_list_stub } from '../stubs/queue';
 
 storiesOf('Queue Errors', module)
   .add('3 queue', () => (
-    <QueueErrors
+    <QueueTasks
       is_loading={false}
       queues_keys={_.keys(error_task_list_stub)}
       list={error_task_list_stub}
@@ -14,6 +14,6 @@ storiesOf('Queue Errors', module)
     />
   ))
   .add('is_loading === true', () => (
-    <QueueErrors is_loading={true}/>
+    <QueueTasks is_loading={true}/>
   ))
 ;

@@ -22,25 +22,25 @@ export default module => ({
   },
   signals: {
     routed,
-    taskSelected: [ set('state:queue_errors.selected_task_key', 'input:selected_task_key') ],
+    taskSelected: [ set('state:queue_tasks.selected_task_key', 'input:selected_task_key') ],
     queueRemoveClicked: [
-      set('state:queue_errors.selected_task_key', 'input:selected_task_key'),
-      get_payload_from_state('task_key', 'queue_errors.selected_task_key'),
+      set('state:queue_tasks.selected_task_key', 'input:selected_task_key'),
+      get_payload_from_state('task_key', 'queue_tasks.selected_task_key'),
       firebase_save_task('spec__task_remove'), {
         success: [
-          // set('state:queue_errors.saved', true),
-          // redirect('/queue_errors'),
-          // set('state:currentPage', 'queue_errors'),
+          // set('state:queue_tasks.saved', true),
+          // redirect('/queue_tasks'),
+          // set('state:currentPage', 'queue_tasks'),
         ],
         error: [
-          set('state:queue_errors.error', 'JOB ERROR'),
+          set('state:queue_tasks.error', 'JOB ERROR'),
         ],
       },
-      set('state:queue_errors.selected_task_key', null),
+      set('state:queue_tasks.selected_task_key', null),
     ],
 
-    queue_tasks_ChildAdded: [ firebase_merge_item('queue_errors.list') ],
-    queue_tasks_ChildChanged: [ firebase_merge_item('queue_errors.list') ],
-    queue_tasks_ChildRemoved: [ firebase_remove_item('queue_errors.list') ],
+    queue_tasks_ChildAdded: [ firebase_merge_item('queue_tasks.list') ],
+    queue_tasks_ChildChanged: [ firebase_merge_item('queue_tasks.list') ],
+    queue_tasks_ChildRemoved: [ firebase_remove_item('queue_tasks.list') ],
   },
 })

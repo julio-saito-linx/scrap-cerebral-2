@@ -9,12 +9,12 @@ require('./index.css');
 export default connect(
   {
     queues_keys: queue_list(),
-    is_loading: 'queue_errors.is_loading',
-    selected_task_key: 'queue_errors.selected_task_key',
-    list: 'queue_errors.list',
+    is_loading: 'queue_tasks.is_loading',
+    selected_task_key: 'queue_tasks.selected_task_key',
+    list: 'queue_tasks.list',
   },
   {},
-  class QueueErrors extends Component {
+  class QueueTasks extends Component {
 
     _get_error_stack() {
       const selectedTaskKey = this.props.selected_task_key;
@@ -28,7 +28,7 @@ export default connect(
     render() {
       return (
         <section id="queue">
-          <h1>QueueErrors</h1>
+          <h1>QueueTasks</h1>
           {this.props.is_loading ? (
             <BigLoading />
           ) : (

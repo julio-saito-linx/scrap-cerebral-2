@@ -1,8 +1,8 @@
 import {Computed} from 'cerebral'
 
 export default Computed({
-  limit: 'queue_errors.list_limit',
-  items: 'queue_errors.list.*'
+  limit: 'queue_tasks.list_limit',
+  items: 'queue_tasks.list.*'
 }, ({limit, items}) => {
   if (!items) {
     return [];

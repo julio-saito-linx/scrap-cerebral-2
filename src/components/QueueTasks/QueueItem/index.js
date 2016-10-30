@@ -7,12 +7,12 @@ require('../../shared_styles/table.css');
 require('./index.css');
 
 export default connect((props) => ({
-    task: `queue_errors.list.${props.itemKey}`,
-    selected_task_key: 'queue_errors.selected_task_key',
+    task: `queue_tasks.list.${props.itemKey}`,
+    selected_task_key: 'queue_tasks.selected_task_key',
   }),
   {
-    taskSelected: 'queue_errors.taskSelected',
-    queueRemoveClicked: 'queue_errors.queueRemoveClicked',
+    taskSelected: 'queue_tasks.taskSelected',
+    queueRemoveClicked: 'queue_tasks.queueRemoveClicked',
   },
   function Item(props) {
     const _removeJob = (ev) => {
