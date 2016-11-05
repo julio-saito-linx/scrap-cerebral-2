@@ -8,7 +8,7 @@
 
 ./node_modules/.bin/concurrently -k -r \
 '/opt/logstash/bin/logstash -f queue/utils/logstash_config_elastic.conf' \
-'/usr/lib/kibana/bin/kibana > /dev/null 2>&1' \
+'/usr/share/kibana/bin/kibana > /dev/null 2>&1' \
 'NODE_ENV=test start-storybook -p 6006' \
 'node ./scripts/wait_for_logstash.js && nodemon queue/index.js -e js -w queue' \
 'node scripts/start.js'

@@ -52,7 +52,7 @@ yarn
 /opt/logstash/bin/logstash
 
 # /usr/lib/kibana/bin/kibana
-sudo chown julio:julio /usr/lib/kibana/bin/kibana
+sudo chown julio:julio /usr/share/kibana/bin/kibana
 sudo chown -R julio:julio /usr/lib/kibana/optimize/
 
 # http://localhost:5601/app/kibana
