@@ -8,7 +8,7 @@ export const error_task_stub = {
   _progress: 0,
   _state: "error",
   _state_changed: 1476671916960,
-  initial_spec_state: "1",
+  jquery_selector: "1",
   task_name: "1",
   url: "1",
 };

@@ -27,7 +27,7 @@ export default connect((props) => ({
           {props.job.job_name}
         </Table.Cell>
         <Table.Cell>
-          {props.job.initial_spec_state}
+          {props.job.jquery_selector}
         </Table.Cell>
         <Table.Cell>
           {props.job.url}

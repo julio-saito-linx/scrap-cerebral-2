@@ -39,7 +39,7 @@ export default connect({
     render() {
       const job = this.props.selected_job || this.props.new_job || {
           job_name: '',
-          initial_spec_state: '',
+          jquery_selector: '',
           url: '',
         };
       const job_type_path = this.props.selected_job ? 'jobs.selected_job' : 'jobs.new_job';
@@ -68,11 +68,11 @@ export default connect({
                 <Form.Field>
                   <label>Initial spec state</label>
                   <input
-                    placeholder='initial_spec_state'
-                    value={job.initial_spec_state}
+                    placeholder='jquery_selector'
+                    value={job.jquery_selector}
                     onChange={(event) => {
                       this.props.fieldChanged({
-                        state_path: `${job_type_path}.initial_spec_state`,
+                        state_path: `${job_type_path}.jquery_selector`,
                         value: event.target.value
                       })
                     }}

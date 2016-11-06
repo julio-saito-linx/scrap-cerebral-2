@@ -55,7 +55,7 @@ module.exports = class job_run {
         return { job };
       })
       .then((context) => {
-        return extract_with_selector(context.job.url, context.job.initial_spec_state)
+        return extract_with_selector(context.job.url, context.job.jquery_selector)
           .then((result) => {
             context.result = result;
             // logger -----------
