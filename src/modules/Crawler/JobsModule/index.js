@@ -88,5 +88,17 @@ export default module => ({
         });
       },
     ],
+
+    redirectedToAddJob: [
+      function ({ router }) {
+        router.redirectToSignal('jobs.routed_jobs_add');
+      },
+    ],
+
+    redirectedToList: [
+      function ({ router }) {
+        router.redirectToSignal('jobs.routed');
+      },
+    ],
   },
 })

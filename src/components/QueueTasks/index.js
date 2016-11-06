@@ -28,7 +28,8 @@ export default connect(
     render() {
       return (
         <section id="queue">
-          <h1>QueueTasks</h1>
+          <h1>Tasks</h1>
+          <h4>firebase queue</h4>
           {this.props.is_loading ? (
             <BigLoading />
           ) : (

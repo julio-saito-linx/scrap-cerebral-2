@@ -1,16 +1,10 @@
 #jobs_add_edit {
-  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 20px;
 }
 
-/*#jobs_add_edit_main_container {*/
-  /*display: flex;*/
-  /*flex-direction: row;*/
-  /*justify-content: center;*/
-/*}*/
-
-/*#jobs_add_edit_container {*/
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*align-items: flex-end;*/
-  /*margin-top: 20px;*/
-/*}*/
+#jobs_add_edit .actions {
+  display: flex;
+  justify-content: space-between;
+}

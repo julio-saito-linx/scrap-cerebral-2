@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'cerebral/react';
 import { Button, Form } from 'semantic-ui-react';
 import BigLoading from '../../BigLoading/index';
+import { Segment } from 'semantic-ui-react';
 require('./index.css');
 
 export default connect({
@@ -11,6 +12,7 @@ export default connect({
   }, {
     fieldChanged: 'jobs.fieldChanged',
     saveClicked: 'jobs.saveClicked',
+    redirectedToList: 'jobs.redirectedToList',
   },
   class JobsAddEdit extends Component {
 
@@ -19,20 +21,26 @@ export default connect({
       this.props.saveClicked();
     };
 
+    _BackToList = (ev) => {
+      ev.preventDefault();
+      this.props.redirectedToList();
+    };
+
     render() {
       const job = this.props.selected_job || this.props.new_job || {
           job_name: '',
           initial_spec_state: '',
           url: '',
         };
-      const job_switcher = this.props.selected_job ? 'jobs.selected_job' : 'jobs.new_job';
+      const job_type_path = this.props.selected_job ? 'jobs.selected_job' : 'jobs.new_job';
+      const page_title = this.props.selected_job ? `${job.job_name}` : 'Add new job';
       return (
         <section id="jobs_add_edit">
-          <h1>Jobs</h1>
+          <h1>{page_title}</h1>
           { this.props.is_loading ? (
             <BigLoading />
           ) : (
-            <div id="jobs_add_edit_main_container">
+            <Segment>
               <Form>
                 <Form.Field>
                   <label>Job name</label>
@@ -41,7 +49,7 @@ export default connect({
                     value={job.job_name}
                     onChange={(event) => {
                       this.props.fieldChanged({
-                        state_path: `${job_switcher}.job_name`,
+                        state_path: `${job_type_path}.job_name`,
                         value: event.target.value
                       })
                     }}
@@ -54,7 +62,7 @@ export default connect({
                     value={job.initial_spec_state}
                     onChange={(event) => {
                       this.props.fieldChanged({
-                        state_path: `${job_switcher}.initial_spec_state`,
+                        state_path: `${job_type_path}.initial_spec_state`,
                         value: event.target.value
                       })
                     }}
@@ -67,18 +75,26 @@ export default connect({
                     value={job.url}
                     onChange={(event) => {
                       this.props.fieldChanged({
-                        state_path: `${job_switcher}.url`,
+                        state_path: `${job_type_path}.url`,
                         value: event.target.value
                       })
                     }}
                   />
                 </Form.Field>
-                <Button onClick={this._SaveOnClick}>
-                  Save
-                </Button>
+                <div className="actions">
+                  <Button
+                    onClick={this._SaveOnClick}
+                    content='Save'
+                    icon='save'
+                    labelPosition='left'
+                  />
+                  <Button
+                    onClick={this._BackToList}
+                    content='Cancel'
+                  />
+                </div>
               </Form>
-
-            </div>
+            </Segment>
           )}
         </section>
       )

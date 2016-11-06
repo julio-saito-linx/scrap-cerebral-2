@@ -52,22 +52,16 @@ export default connect(
           </div>
           <ul className="menu">
             <li>
-              {this._render_route_link('home', '/')}
-            </li>
-            <li>
-              {this._render_route_link('display_my_name', '/display_my_name')}
-            </li>
-            <li>
-              {this._render_route_link('users', '/users')}
-            </li>
-            <li>
               {this._render_route_link('jobs', '/jobs')}
             </li>
             <li>
-              {this._render_route_link('add new job', '/jobs/add')}
+              {this._render_route_link('tasks', '/queue_tasks')}
             </li>
             <li>
-              {this._render_route_link('queue_tasks', '/queue_tasks')}
+              {this._render_route_link('home', '/')}
+            </li>
+            <li>
+              {this._render_route_link('users', '/users')}
             </li>
           </ul>
 
