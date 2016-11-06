@@ -53,7 +53,8 @@ yarn
 
 # /usr/lib/kibana/bin/kibana
 sudo chown julio:julio /usr/share/kibana/bin/kibana
-sudo chown -R julio:julio /usr/lib/kibana/optimize/
+sudo chown -R julio:julio /usr/share/kibana/optimize/
+sudo chown -R julio:julio /usr/share/kibana/data/
 
 # http://localhost:5601/app/kibana
 
