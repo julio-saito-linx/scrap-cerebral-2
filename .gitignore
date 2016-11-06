@@ -18,3 +18,4 @@ queue/serviceAccountCredentials
 app.log
 /yarn.lock
 /yarn-error.log
+/sandbox

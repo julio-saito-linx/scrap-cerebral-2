@@ -1,5 +1,4 @@
 import { set } from 'cerebral/operators';
-import { redirect } from 'cerebral-router';
 
 // chains
 import routed from './chains/routed';
@@ -53,9 +52,18 @@ export default module => ({
       firebase_save_task('spec__job_update'), {
         success: [
           set('state:jobs.new_job', EMPTY_JOB),
-          set('state:jobs.selected_job', null),
           set('state:jobs.saved', true),
-          redirect('/jobs'),
+        ],
+        error: [
+          set('state:jobs.error', 'input:error'),
+        ],
+      }
+    ],
+
+    runClicked: [
+      firebase_save_task('spec__job_run'), {
+        success: [
+          set_selected_job,
         ],
         error: [
           set('state:jobs.error', 'input:error'),
@@ -68,9 +76,6 @@ export default module => ({
       get_payload_from_state('job_key', 'jobs.selected_job.id'),
       firebase_save_task('spec__job_remove'), {
         success: [
-          // set('state:jobs.saved', true),
-          // redirect('/jobs'),
-          // set('state:currentPage', 'jobs'),
         ],
         error: [
           set('state:jobs.error', 'JOB ERROR'),

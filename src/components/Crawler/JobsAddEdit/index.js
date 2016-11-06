@@ -12,6 +12,7 @@ export default connect({
   }, {
     fieldChanged: 'jobs.fieldChanged',
     saveClicked: 'jobs.saveClicked',
+    runClicked: 'jobs.runClicked',
     redirectedToList: 'jobs.redirectedToList',
   },
   class JobsAddEdit extends Component {
@@ -19,6 +20,15 @@ export default connect({
     _SaveOnClick = (ev) => {
       ev.preventDefault();
       this.props.saveClicked();
+    };
+
+    _RunOnClick = (ev) => {
+      ev.preventDefault();
+      this.props.runClicked({
+        payload: {
+          id: this.props.selected_job.id
+        }
+      });
     };
 
     _BackToList = (ev) => {
@@ -41,7 +51,7 @@ export default connect({
             <BigLoading />
           ) : (
             <Segment>
-              <Form>
+              <Form onSubmit={(ev) => ev.preventDefault()}>
                 <Form.Field>
                   <label>Job name</label>
                   <input
@@ -89,11 +99,22 @@ export default connect({
                     labelPosition='left'
                   />
                   <Button
+                    onClick={this._RunOnClick}
+                    content='Run'
+                    icon='check circle outline'
+                    labelPosition='left'
+                  />
+                  <Button
                     onClick={this._BackToList}
                     content='Cancel'
                   />
                 </div>
               </Form>
+                {this.props.selected_job && (
+                  <pre>
+                    {this.props.selected_job.result}
+                  </pre>
+                )}
             </Segment>
           )}
         </section>

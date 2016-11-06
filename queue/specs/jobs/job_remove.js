@@ -29,8 +29,6 @@ module.exports = class job_remove {
   }
 
   static task(payload, progress, resolve, reject) {
-    const queue_ref = firebase.database().ref('queue');
-
     // logger -----------
     job_remove.logger.debug('TASK', {
       __filename,
