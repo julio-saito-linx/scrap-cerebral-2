@@ -41,8 +41,6 @@ module.exports = class job_run {
     });
     // ------------------
 
-    throw new Error('TODO');
-
     job_ref.once('value')
       .then((snapshot) => {
         const job = snapshot.val();

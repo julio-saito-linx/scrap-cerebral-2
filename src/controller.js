@@ -24,7 +24,9 @@ const controller = Controller({
 
   signals: {
     listen_to_firebase: [
+      firebase_listen('jobs', 'jobs'),
       firebase_listen('queue_tasks', 'queue.tasks', {}),
+      firebase_listen('users', 'users'),
       set('state:all_firebase_listening_loaded', true),
     ]
   },
