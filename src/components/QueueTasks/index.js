@@ -18,9 +18,10 @@ export default connect(
 
     _get_error_stack() {
       const selectedTaskKey = this.props.selected_task_key;
-      const errorDetails = selectedTaskKey && this.props.list[ selectedTaskKey ]._error_details;
-      if (selectedTaskKey && errorDetails) {
-        return errorDetails.error_stack;
+      if (selectedTaskKey) {
+        const task_item = this.props.list[selectedTaskKey];
+        const error_details = task_item && task_item._error_details;
+        return (error_details && error_details.error_stack) || null;
       }
       return null;
     }
