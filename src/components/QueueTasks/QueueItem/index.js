@@ -25,6 +25,9 @@ export default connect((props) => ({
     };
 
     const _get_task_name = () => {
+      if (!props.task) {
+        return '';
+      }
       if (props.task._error_details) {
         return props.task._error_details.previous_state;
       } else {
@@ -33,6 +36,9 @@ export default connect((props) => ({
     };
 
     const _get_task_value = () => {
+      if (!props.task) {
+        return '';
+      }
       if (props.task._error_details) {
         return props.task._error_details.error;
       } else {

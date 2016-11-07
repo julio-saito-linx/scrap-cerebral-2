@@ -3,21 +3,18 @@ import { connect } from 'cerebral/react';
 import cerebral_logo from './assets/cerebral_logo_bg.svg';
 import react_logo from './assets/logo.svg';
 import './main.css';
-import Home from '../Home';
-import DisplayMyName from '../DisplayMyName';
 import Users from '../Users';
 import UserDetail from '../UserDetail';
 import Jobs from '../Crawler/Jobs';
 import JobsAddEdit from '../Crawler/JobsAddEdit';
 import QueueTasks from '../QueueTasks/index';
+import { Label } from 'semantic-ui-react'
+import queue_list_common from '../../computed/queue_list_common';
+import queue_list_error from '../../computed/queue_list_error';
 
 const pages = {
-  home: Home,
-  display_my_name: DisplayMyName,
   users: Users,
   user_detail: UserDetail,
-
-  // crawler
   jobs: Jobs,
   jobs_add_edit: JobsAddEdit,
   queue_tasks: QueueTasks,
@@ -25,10 +22,22 @@ const pages = {
 
 export default connect(
   {
-    currentPage: 'currentPage'
+    currentPage: 'currentPage',
+    queues_keys_common: queue_list_common(),
+    queues_keys_error: queue_list_error(),
+    all_firebase_listening_loaded: 'all_firebase_listening_loaded',
   },
-  {},
+  {
+    listen_to_firebase: 'listen_to_firebase',
+  },
   class Main extends Component {
+
+    componentDidMount() {
+      if (!this.props.all_firebase_listening_loaded) {
+        this.props.listen_to_firebase();
+      }
+    }
+
     _render_route_link(link_name, link_href) {
       let route = <a href={link_href}>{link_name}</a>;
       if (this.props.currentPage === link_name) {
@@ -38,7 +47,9 @@ export default connect(
     }
 
     render() {
-      const Page = pages[ this.props.currentPage ];
+      const Page = pages[this.props.currentPage];
+      
+
       return (
         <div className="App">
           <div className="app-header">
@@ -50,27 +61,38 @@ export default connect(
               <img src={react_logo} className="react_logo" alt="logo"/>
             </div>
           </div>
-          <ul className="menu">
-            <li>
-              {this._render_route_link('jobs', '/jobs')}
-            </li>
-            <li>
-              {this._render_route_link('tasks', '/queue_tasks')}
-            </li>
-            <li>
-              {this._render_route_link('home', '/')}
-            </li>
-            <li>
-              {this._render_route_link('users', '/users')}
-            </li>
-          </ul>
 
-          <section className="main-container">
-            <Page />
-          </section>
+          <div className="menu-top">
+            <ul className="menu">
+              <li>
+                {this._render_route_link('jobs', '/jobs')}
+              </li>
+              <li>
+                {this._render_route_link('tasks', '/queue_tasks')}
+              </li>
+              <li>
+                {this._render_route_link('users', '/users')}
+              </li>
+            </ul>
+            {this.props.queues_keys_common.length > 0 && (
+              <Label circular color="green">
+                {this.props.queues_keys_common.length}
+              </Label>
+            )}
+            {this.props.queues_keys_error.length > 0 && (
+              <Label circular color="red">
+                {this.props.queues_keys_error.length}
+              </Label>
+            )}
+          </div>
+
+          {pages[this.props.currentPage] && (
+            <section className="main-container">
+              <Page />
+            </section>
+          )}
 
         </div>
-
       );
     }
   }

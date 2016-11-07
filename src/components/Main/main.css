@@ -65,12 +65,21 @@
 
 .menu {
   display: flex;
+  flex-grow: 1;
   flex-direction: row;
   justify-content: space-around;
   margin: 7px 0 0 0;
-  border-bottom: 1px solid #73429f;
   padding: 0 0 7px 0;
   font-size: 16px;
+}
+
+.menu-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #73429f;
+  align-items: center;
+  margin: 4px 20px;
 }
 
 @media all and (max-width: 500px) {

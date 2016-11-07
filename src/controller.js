@@ -1,28 +1,32 @@
 import { Controller } from 'cerebral';
+import { set } from 'cerebral/operators';
 import Devtools from 'cerebral/devtools';
 import Router from 'cerebral-router';
 import FirebaseProvider from 'cerebral-provider-firebase';
-import HomeModule from './modules/HomeModule';
-import DisplayMyNameModule from './modules/DisplayMyNameModule';
 import UsersModule from './modules/UsersModule';
 import JobsModule from './modules/Crawler/JobsModule';
 import QueueTasks from './modules/QueueTasks';
+import firebase_listen from './shared_actions/firebase/firebase_listen';
 
 const controller = Controller({
   devtools: process.env.NODE_ENV === 'production' ? null : Devtools(),
 
   modules: {
-    display_my_name: DisplayMyNameModule,
-    home: HomeModule,
     users: UsersModule,
-
-    //crawler
     jobs: JobsModule,
     queue_tasks: QueueTasks,
   },
 
   state: {
-    currentPage: 'home'
+    currentPage: 'jobs',
+    all_firebase_listening_loaded: false,
+  },
+
+  signals: {
+    listen_to_firebase: [
+      firebase_listen('queue_tasks', 'queue.tasks', {}),
+      set('state:all_firebase_listening_loaded', true),
+    ]
   },
 
   router: Router({
@@ -30,10 +34,6 @@ const controller = Controller({
     onlyHash: false, // Use hash urls
     baseUrl: '' // Only handle url changes on nested path
   }),
-
-  routes: {
-    '/': 'home.routed',
-  },
 
   providers: [
     FirebaseProvider({
