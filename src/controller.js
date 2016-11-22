@@ -1,5 +1,5 @@
 import { Controller } from 'cerebral';
-import { set } from 'cerebral/operators';
+import { set, state } from 'cerebral/operators';
 import Devtools from 'cerebral/devtools';
 import Router from 'cerebral-router';
 import FirebaseProvider from 'cerebral-provider-firebase';
@@ -27,11 +27,23 @@ const controller = Controller({
       firebase_listen('jobs', 'jobs'),
       firebase_listen('queue_tasks', 'queue.tasks', {}),
       firebase_listen('users', 'users'),
-      set('state:all_firebase_listening_loaded', true),
+      set(state`all_firebase_listening_loaded`, true),
+    ],
+    routed: [
+      set(state`currentPage`, 'jobs'),
     ]
   },
 
   router: Router({
+    routes: {
+      '/': 'routed',
+      '/users/': 'users.routed',
+      '/users/:uid': 'users.routed_user_detail',
+      '/queue_tasks/': 'queue_tasks.routed',
+      '/jobs/': 'jobs.routed',
+      '/jobs/add': 'jobs.routed_jobs_add',
+      '/jobs/:id/edit': 'jobs.routed_job_edit',
+    },
     query: false, // Query support
     onlyHash: false, // Use hash urls
     baseUrl: '' // Only handle url changes on nested path

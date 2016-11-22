@@ -1,4 +1,4 @@
-import { set } from 'cerebral/operators';
+import { set, state, input } from 'cerebral/operators';
 
 // chains
 import routed from './chains/routed';
@@ -33,11 +33,6 @@ export default module => ({
     new_job: EMPTY_JOB,
     selected_job: null,
   },
-  routes: {
-    '/': 'routed',
-    '/add': 'routed_jobs_add',
-    '/:id/edit': 'routed_job_edit',
-  },
   signals: {
     routed,
     routed_jobs_add,
@@ -51,11 +46,11 @@ export default module => ({
       get_payload_job,
       firebase_save_task('spec__job_update'), {
         success: [
-          set('state:jobs.new_job', EMPTY_JOB),
-          set('state:jobs.saved', true),
+          set(state`jobs.new_job`, EMPTY_JOB),
+          set(state`jobs.saved`, true),
         ],
         error: [
-          set('state:jobs.error', 'input:error'),
+          set(state`jobs.error`, input`error`),
         ],
       }
     ],
@@ -66,7 +61,7 @@ export default module => ({
           set_selected_job,
         ],
         error: [
-          set('state:jobs.error', 'input:error'),
+          set(state`jobs.error`, input`error`),
         ],
       }
     ],
@@ -78,15 +73,15 @@ export default module => ({
         success: [
         ],
         error: [
-          set('state:jobs.error', 'JOB ERROR'),
+          set(state`jobs.error`, 'JOB ERROR'),
         ],
       },
-      set('state:jobs.selected_job', null),
+      set(state`jobs.selected_job`, null),
     ],
 
     jobSelected: [
-      set('state:jobs.new_job', EMPTY_JOB),
-      set('state:jobs.selected_job', 'input:job'),
+      set(state`jobs.new_job`, EMPTY_JOB),
+      set(state`jobs.selected_job`, input`job`),
       function ({ state, router }) {
         router.redirectToSignal('jobs.routed_job_edit', {
           id: state.get('jobs.selected_job.id')

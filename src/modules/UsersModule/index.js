@@ -13,10 +13,6 @@ export default module => ({
     is_loading: false,
     is_logged: false,
   },
-  routes: {
-    '/': 'routed',
-    '/:uid': 'routed_user_detail',
-  },
   signals: {
     routed,
     routed_user_detail,

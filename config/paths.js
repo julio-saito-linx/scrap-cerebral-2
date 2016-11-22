@@ -35,7 +35,23 @@ module.exports = {
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
   ownNodeModules: resolveApp('node_modules'),
-  cerebralPath: path.resolve('..', 'cerebral', 'packages', 'cerebral'),
-  cerebralRouterPath: path.resolve('..', 'cerebral', 'packages', 'cerebral-router'),
   nodePaths: nodePaths
 };
+
+
+
+// config before publish: we're in ./packages/react-scripts/config/
+if (__dirname.indexOf(path.join('packages', 'react-scripts', 'config')) !== -1) {
+  module.exports = {
+    appBuild: resolveOwn('../../../build'),
+    appPublic: resolveOwn('../template/public'),
+    appHtml: resolveOwn('../template/public/index.html'),
+    appIndexJs: resolveOwn('../template/src/index.js'),
+    appPackageJson: resolveOwn('../package.json'),
+    appSrc: resolveOwn('../template/src'),
+    testsSetup: resolveOwn('../template/src/setupTests.js'),
+    appNodeModules: resolveOwn('../node_modules'),
+    ownNodeModules: resolveOwn('../node_modules'),
+    nodePaths: nodePaths
+  };
+}

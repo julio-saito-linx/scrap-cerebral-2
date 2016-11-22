@@ -2,7 +2,7 @@ import {Computed} from 'cerebral'
 
 export default Computed({
   limit: 'users.list_limit',
-  items: 'users.list.*'
+  items: 'users.list'
 }, ({limit, items}) => {
   if (!items) {
     return [];

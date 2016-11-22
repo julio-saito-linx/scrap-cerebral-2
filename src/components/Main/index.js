@@ -23,8 +23,8 @@ const pages = {
 export default connect(
   {
     currentPage: 'currentPage',
-    queues_keys_common: queue_list_common(),
-    queues_keys_error: queue_list_error(),
+    queues_keys_common: queue_list_common,
+    queues_keys_error: queue_list_error,
     all_firebase_listening_loaded: 'all_firebase_listening_loaded',
   },
   {

@@ -1,10 +1,10 @@
 process.env.NODE_ENV = 'development';
 
-// Load environment variables from .env file. Surpress warnings using silent
+// Load environment variables from .env file. Suppress warnings using silent
 // if this file is missing. dotenv will never modify any environment variables
 // that have already been set.
 // https://github.com/motdotla/dotenv
-require('dotenv').config({ silent: true });
+require('dotenv').config({silent: true});
 
 const chalk = require('chalk');
 const webpack = require('webpack');
@@ -12,16 +12,16 @@ const WebpackDevServer = require('webpack-dev-server');
 const historyApiFallback = require('connect-history-api-fallback');
 const httpProxyMiddleware = require('http-proxy-middleware');
 const detect = require('detect-port');
-const clearConsole = () => {}; //require('react-dev-utils/clearConsole');
+const clearConsole = require('react-dev-utils/clearConsole');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
-// var openBrowser = require('react-dev-utils/openBrowser');
+const openBrowser = require('react-dev-utils/openBrowser');
 const prompt = require('react-dev-utils/prompt');
 const config = require('../config/webpack.config.dev');
 const paths = require('../config/paths');
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([ paths.appHtml, paths.appIndexJs ])) {
+if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
 
@@ -52,14 +52,14 @@ function setupCompiler(host, port, protocol) {
   // recompiling a bundle. WebpackDevServer takes care to pause serving the
   // bundle, so if you refresh, it'll wait instead of serving the old one.
   // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
-  compiler.plugin('invalid', function () {
+  compiler.plugin('invalid', function() {
     clearConsole();
     console.log('Compiling...');
   });
 
   // "done" event fires when Webpack has finished recompiling the bundle.
   // Whether or not you have warnings or errors, you will get this event.
-  compiler.plugin('done', function (stats) {
+  compiler.plugin('done', function(stats) {
     clearConsole();
 
     // We have switched off the default Webpack output in WebpackDevServer
@@ -98,9 +98,9 @@ function setupCompiler(host, port, protocol) {
         console.log();
       });
       // Teach some ESLint tricks.
-      // console.log('You may use special comments to disable some warnings.');
-      // console.log('Use ' + chalk.yellow('// eslint-disable-next-line') + ' to ignore the next line.');
-      // console.log('Use ' + chalk.yellow('/* eslint-disable */') + ' to ignore all warnings in a file.');
+      console.log('You may use special comments to disable some warnings.');
+      console.log('Use ' + chalk.yellow('// eslint-disable-next-line') + ' to ignore the next line.');
+      console.log('Use ' + chalk.yellow('/* eslint-disable */') + ' to ignore all warnings in a file.');
     }
   });
 }
@@ -108,7 +108,7 @@ function setupCompiler(host, port, protocol) {
 // We need to provide a custom onError function for httpProxyMiddleware.
 // It allows us to log custom error messages on the console.
 function onProxyError(proxy) {
-  return function (err, req, res) {
+  return function(err, req, res){
     const host = req.headers && req.headers.host;
     console.log(
       chalk.red('Proxy error:') + ' Could not proxy request ' + chalk.cyan(req.url) +
@@ -123,7 +123,7 @@ function onProxyError(proxy) {
     // And immediately send the proper error response to the client.
     // Otherwise, the request will eventually timeout with ERR_EMPTY_RESPONSE on the client side.
     if (res.writeHead && !res.headersSent) {
-      res.writeHead(500);
+        res.writeHead(500);
     }
     res.end('Proxy error: Could not proxy request ' + req.url + ' from ' +
       host + ' to ' + proxy + ' (' + err.code + ').'
@@ -147,8 +147,8 @@ function addMiddleware(devServer) {
     // However API calls like `fetch()` won’t generally accept text/html.
     // If this heuristic doesn’t work well for you, don’t use `proxy`.
     htmlAcceptHeaders: proxy ?
-      [ 'text/html' ] :
-      [ 'text/html', '*/*' ]
+      ['text/html'] :
+      ['text/html', '*/*']
   }));
   if (proxy) {
     if (typeof proxy !== 'string') {
@@ -234,8 +234,8 @@ function runDevServer(host, port, protocol) {
     }
 
     clearConsole();
-    // console.log(chalk.cyan('Starting the development server...'));
-    // console.log();
+    console.log(chalk.cyan('Starting the development server...'));
+    console.log();
     // openBrowser(protocol + '://' + host + ':' + port + '/');
   });
 }
