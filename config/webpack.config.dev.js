@@ -1,4 +1,4 @@
-let path = require('path');
+const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const findCacheDir = require('find-cache-dir');
@@ -14,9 +14,9 @@ const paths = require('./paths');
 const publicPath = '/';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
-// Omit trailing shlash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
+// Omit trailing slash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
 const publicUrl = '';
-// Get enrivonment variables to inject into our app.
+// Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 
 // This is the development configuration.
@@ -79,8 +79,9 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      'cerebral': paths.cerebralPath,
-      'cerebral-router': paths.cerebralRouterPath,
+      'cerebral': path.resolve(paths.cerebralPath, 'cerebral'),
+      'cerebral-router': path.resolve(paths.cerebralPath, 'cerebral-router'),
+      'cerebral-provider-firebase': path.resolve(paths.cerebralPath, 'cerebral-provider-firebase'),
     }
   },
   
@@ -118,7 +119,7 @@ module.exports = {
       // in development "style" loader enables hot editing of CSS.
       {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: 'style!css?importLoaders=1!postcss'
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.

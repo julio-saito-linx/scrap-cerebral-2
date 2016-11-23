@@ -8,7 +8,7 @@ require('./index.css');
 
 export default connect(
   {
-    queues_keys: queue_list(),
+    queues_keys: queue_list,
     is_loading: 'queue_tasks.is_loading',
     selected_task_key: 'queue_tasks.selected_task_key',
     list: 'queue_tasks.list',

@@ -1,7 +1,10 @@
 function firebase_merge_item(state_path) {
   return function mergeItem({ state, input }) {
     const { key, value } = input;
-    state.set(`${state_path}.${key}`, value);
+    const exists = state.get(state_path) && state.get(`${state_path}.${key}`);
+    if (exists) {
+      state.set(`${state_path}.${key}`, value);
+    }
     return { key };
   };
 }

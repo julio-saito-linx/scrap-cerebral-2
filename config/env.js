@@ -4,29 +4,29 @@
 const REACT_APP = /^REACT_APP_/i;
 
 function getClientEnvironment(publicUrl) {
-  return Object
-    .keys(process.env)
-    .filter(key => REACT_APP.test(key))
-    .reduce((env, key) => {
-      env['process.env.' + key] = JSON.stringify(process.env[key]);
-      return env;
-    }, {
-      // Useful for determining whether we’re running in production mode.
-      // Most importantly, it switches React into the correct mode.
-      'process.env.NODE_ENV': JSON.stringify(
-        process.env.NODE_ENV || 'development'
-      ),
-      // Useful for resolving the correct path to static assets in `public`.
-      // For example, <img src={process.env.PUBLIC_URL + '/img/react_logo.png'} />.
-      // This should only be used as an escape hatch. Normally you would put
-      // images into the `src` and `import` them in code to get their paths.
-      'process.env.PUBLIC_URL': JSON.stringify(publicUrl),
-      // Firebase
-      'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY || ''),
-      'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN || ''),
-      'process.env.FIREBASE_DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL || ''),
-      'process.env.FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET || ''),
-    });
+  const processEnv = Object
+  .keys(process.env)
+  .filter(key => REACT_APP.test(key))
+  .reduce((env, key) => {
+    env[key] = JSON.stringify(process.env[key]);
+    return env;
+  }, {
+    // Useful for determining whether we’re running in production mode.
+    // Most importantly, it switches React into the correct mode.
+    'NODE_ENV': JSON.stringify(
+      process.env.NODE_ENV || 'development'
+    ),
+    // Useful for resolving the correct path to static assets in `public`.
+    // For example, <img src={process.env.PUBLIC_URL + '/img/logo.png'} />.
+    // This should only be used as an escape hatch. Normally you would put
+    // images into the `src` and `import` them in code to get their paths.
+    'PUBLIC_URL': JSON.stringify(publicUrl),
+    'FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY || ''),
+    'FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN || ''),
+    'FIREBASE_DATABASE_URL': JSON.stringify(process.env.FIREBASE_DATABASE_URL || ''),
+    'FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET || ''),
+  });
+  return { 'process.env': processEnv };
 }
 
 module.exports = getClientEnvironment;

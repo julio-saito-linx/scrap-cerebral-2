@@ -4,7 +4,7 @@
 
 ### run dev
 
-####Install:
+#### Install:
 
 ```shell
 yarn
@@ -15,7 +15,21 @@ yarn
 ./scripts/start-all.sh
 ```
 
-(optional) If you want you can do professional logging installing **ElasticSearch**, **Logstash** and **Kibana**.
+_(optional) For professional logging install and run **ElasticSearch**, **Logstash** and **Kibana**._
+
+#### Run cerebral from source:
+
+```shell
+./scripts/link-cerebral-source.sh
+```
+
+##### undo:
+
+```shell
+./scripts/unlink-cerebral-source.sh
+```
+
+-----------
 
 ## libs used
 
@@ -36,9 +50,7 @@ yarn
 - [kibana](https://www.elastic.co/products/kibana)
 
 
-# naming conventions
-
-#### TODO:
+#### code style:
 
 - `signals_underline_style`
 - `actions_underline_style`
@@ -46,7 +58,7 @@ yarn
 - `_onEventInComponent`
 - `class ClassReactComponent extends Component`
 
-# personal reffs
+##### notes
 
 ```shell
 /opt/logstash/bin/logstash

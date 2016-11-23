@@ -6,8 +6,8 @@ import { Segment } from 'semantic-ui-react';
 require('./index.css');
 
 export default connect({
-    new_job: `jobs.new_job.*`,
-    selected_job: 'jobs.selected_job.*',
+    new_job: 'jobs.new_job',
+    selected_job: 'jobs.selected_job',
     is_loading: 'jobs.is_loading',
   }, {
     fieldChanged: 'jobs.fieldChanged',

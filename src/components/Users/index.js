@@ -8,7 +8,7 @@ require('./index.css');
 
 export default connect(
   {
-    users_list: users_list(),
+    users_list: users_list,
     is_loading: 'users.is_loading',
   },
   {},

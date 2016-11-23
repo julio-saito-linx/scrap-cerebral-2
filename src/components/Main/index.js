@@ -23,8 +23,8 @@ const pages = {
 export default connect(
   {
     currentPage: 'currentPage',
-    queues_keys_common: queue_list_common(),
-    queues_keys_error: queue_list_error(),
+    queues_keys_common: queue_list_common,
+    queues_keys_error: queue_list_error,
     all_firebase_listening_loaded: 'all_firebase_listening_loaded',
   },
   {
@@ -69,21 +69,21 @@ export default connect(
               </li>
               <li>
                 {this._render_route_link('tasks', '/queue_tasks')}
+                {this.props.queues_keys_common.length > 0 && (
+                  <Label circular color="green">
+                    {this.props.queues_keys_common.length}
+                  </Label>
+                )}
+                {this.props.queues_keys_error.length > 0 && (
+                  <Label circular color="red">
+                    {this.props.queues_keys_error.length}
+                  </Label>
+                )}
               </li>
               <li>
                 {this._render_route_link('users', '/users')}
               </li>
             </ul>
-            {this.props.queues_keys_common.length > 0 && (
-              <Label circular color="green">
-                {this.props.queues_keys_common.length}
-              </Label>
-            )}
-            {this.props.queues_keys_error.length > 0 && (
-              <Label circular color="red">
-                {this.props.queues_keys_error.length}
-              </Label>
-            )}
           </div>
 
           {pages[this.props.currentPage] && (

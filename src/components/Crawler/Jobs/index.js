@@ -8,7 +8,7 @@ require('./index.css');
 
 export default connect(
   {
-    jobs_list: jobs_list(),
+    jobs_list: jobs_list,
     is_loading: 'jobs.is_loading',
   },
   {
