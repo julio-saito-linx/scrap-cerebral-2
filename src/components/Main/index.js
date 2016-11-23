@@ -69,21 +69,21 @@ export default connect(
               </li>
               <li>
                 {this._render_route_link('tasks', '/queue_tasks')}
+                {this.props.queues_keys_common.length > 0 && (
+                  <Label circular color="green">
+                    {this.props.queues_keys_common.length}
+                  </Label>
+                )}
+                {this.props.queues_keys_error.length > 0 && (
+                  <Label circular color="red">
+                    {this.props.queues_keys_error.length}
+                  </Label>
+                )}
               </li>
               <li>
                 {this._render_route_link('users', '/users')}
               </li>
             </ul>
-            {this.props.queues_keys_common.length > 0 && (
-              <Label circular color="green">
-                {this.props.queues_keys_common.length}
-              </Label>
-            )}
-            {this.props.queues_keys_error.length > 0 && (
-              <Label circular color="red">
-                {this.props.queues_keys_error.length}
-              </Label>
-            )}
           </div>
 
           {pages[this.props.currentPage] && (

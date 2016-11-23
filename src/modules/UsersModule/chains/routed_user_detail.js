@@ -6,7 +6,8 @@ import set_selected_user from '../actions/set_selected_user';
 const routed_user_detail = [
   set(state`currentPage`, 'user_detail'),
   when(state`users.is_logged`), {
-    true: [],
+    true: [
+    ],
     false: [
       set(state`users.is_loading`, true),
       ...login,

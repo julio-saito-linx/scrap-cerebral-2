@@ -10,6 +10,9 @@ export default connect({
   {},
   class UserDetail extends Component {
     render() {
+      if (!this.props.selected_user) {
+        return null;
+      }
       return (
         <section id="user-detail-section">
           <h1>User Details</h1>

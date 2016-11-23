@@ -78,7 +78,10 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      'cerebral': path.resolve(paths.cerebralPath, 'cerebral'),
+      'cerebral-router': path.resolve(paths.cerebralPath, 'cerebral-router'),
+      'cerebral-provider-firebase': path.resolve(paths.cerebralPath, 'cerebral-provider-firebase'),
     }
   },
   
@@ -97,7 +100,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         include: paths.appSrc,
-        loader: 'babel',
+        loader: require.resolve('babel-loader'),
         query: {
           
           // This is a feature of `babel-loader` for webpack (not Babel itself).
