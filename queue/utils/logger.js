@@ -44,8 +44,10 @@ module.exports = class Logger {
           this._transports.push(
             new (winston.transports.Console)({
               level: 'debug',
-              handleExceptions: true,
               colorize: true,
+              prettyPrint: true,
+              handleExceptions: true,
+              humanReadableUnhandledException: true,
             }));
 
           this._transports.push(

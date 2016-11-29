@@ -73,19 +73,14 @@
     "x-ray": "^2.3.1"
   },
   "scripts": {
-    "start": "./scripts/start-all.sh",
-    "dev-local-server": "node scripts/start.js",
+    "start": "./scripts/start-scrap-only.sh",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "prod-local-server": "npm run build && firebase serve",
     "deploy": "npm run build && firebase deploy",
     "clean-watchman": "watchman watch-del-all; watchman shutdown-server",
     "storybook": "NODE_ENV=test start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "queue-local-server": "node queue/index.js",
-    "start-kibana": "/usr/lib/kibana/bin/kibana",
-    "logstash-wait-for-server": "node ./scripts/wait_for_logstash.js",
-    "logstash-server": "/opt/logstash/bin/logstash -f queue/utils/logstash_config_elastic.conf"
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "unmockedModulePathPatterns": [
