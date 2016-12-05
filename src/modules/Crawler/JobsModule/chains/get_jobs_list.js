@@ -8,7 +8,6 @@ const get_jobs_list = [
     ],
     error: [],
   },
-  set(state`jobs.is_loading`, false),
 ];
 
 export default get_jobs_list;

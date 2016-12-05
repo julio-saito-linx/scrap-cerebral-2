@@ -7,8 +7,7 @@ const get_tasks_list = [
       set(state`queue_tasks.list`, input`value`)
     ],
     error: [],
-  },
-  set(state`queue_tasks.is_loading`, false),
+  }
 ];
 
 export default get_tasks_list;

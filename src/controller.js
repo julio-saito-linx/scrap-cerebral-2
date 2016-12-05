@@ -7,6 +7,8 @@ import UsersModule from './modules/UsersModule';
 import JobsModule from './modules/Crawler/JobsModule';
 import QueueTasks from './modules/QueueTasks';
 import firebase_listen from './shared_actions/firebase/firebase_listen';
+import get_tasks_list from './modules/QueueTasks/chains/get_tasks_list';
+import get_jobs_list from './modules/Crawler/JobsModule/chains/get_jobs_list';
 
 const controller = Controller({
   devtools: process.env.NODE_ENV === 'production' ? null : Devtools(),
@@ -28,6 +30,14 @@ const controller = Controller({
       firebase_listen('queue_tasks', 'queue.tasks', {}),
       firebase_listen('users', 'users'),
       set(state`all_firebase_listening_loaded`, true),
+
+      set(state`queue_tasks.is_loading`, true),
+      ...get_tasks_list,
+      set(state`queue_tasks.is_loading`, false),
+
+      set(state`jobs.is_loading`, true),
+      ...get_jobs_list,
+      set(state`jobs.is_loading`, false),
     ],
     routed: [
       set(state`currentPage`, 'jobs'),

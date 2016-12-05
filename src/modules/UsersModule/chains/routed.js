@@ -13,6 +13,7 @@ const routed = [
       ...get_users_list,
     ]
   },
+  set(state`users.is_loading`, false),
 ];
 
 export default routed;

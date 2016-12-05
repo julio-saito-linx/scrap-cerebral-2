@@ -8,7 +8,6 @@ const get_users_list = [
     ],
     error: [],
   },
-  set(state`users.is_loading`, false),
 ];
 
 export default get_users_list;
