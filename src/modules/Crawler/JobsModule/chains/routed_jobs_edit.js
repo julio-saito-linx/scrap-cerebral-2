@@ -1,5 +1,4 @@
-import { set, state, when } from 'cerebral/operators';
-import get_jobs_list from './get_jobs_list';
+import { set, state } from 'cerebral/operators';
 import set_selected_job from '../actions/set_selected_job';
 
 const routed_jobs_edit = [

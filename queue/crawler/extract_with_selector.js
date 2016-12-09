@@ -1,4 +1,4 @@
-const xray = require('x-ray')();
+const xray = require('x-ray')(); // https://github.com/lapwinglabs/x-ray
 
 module.exports = function extract_with_selector(url, selector) {
   return new Promise((resolve, reject) => {

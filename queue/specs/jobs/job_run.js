@@ -53,7 +53,7 @@ module.exports = class job_run {
           'job.id': job.id,
           'job.job_name': job.job_name,
           'job.jquery_selector': job.jquery_selector,
-          'job.result.length': job.result.length
+          'job.result.length': job.result && job.result.length
         });
         // ------------------
         return { job };
