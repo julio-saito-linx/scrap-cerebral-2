@@ -62,6 +62,7 @@
     "firebase-queue": "^1.5.0",
     "function-tree": "^0.5.0-alpha.2",
     "glob": "^7.1.1",
+    "got": "^6.6.3",
     "lodash": "^4.16.6",
     "nodemon": "^1.11.0",
     "react": "^15.3.2",

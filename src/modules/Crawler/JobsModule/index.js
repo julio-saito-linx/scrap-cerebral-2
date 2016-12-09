@@ -18,7 +18,6 @@ import get_payload_job from './actions/get_payload_job';
 
 const EMPTY_JOB = {
   job_name: '',
-  jquery_selector: '',
   url: ''
 };
 

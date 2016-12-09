@@ -1,7 +1,7 @@
 const firebase = require('firebase');
 const Queue = require('firebase-queue');
 const _ = require('lodash');
-const extract_with_selector = require('../../crawler/extract_with_selector');
+const get_html = require('../../crawler/get_html');
 
 module.exports = class job_run {
   constructor(logger) {
@@ -49,13 +49,17 @@ module.exports = class job_run {
           __filename,
           name: 'job_run',
           state: '1 current job',
-          job,
+          'job.created_at': job.created_at,
+          'job.id': job.id,
+          'job.job_name': job.job_name,
+          'job.jquery_selector': job.jquery_selector,
+          'job.result.length': job.result.length
         });
         // ------------------
         return { job };
       })
       .then((context) => {
-        return extract_with_selector(context.job.url, context.job.jquery_selector)
+        return get_html(context.job.url)
           .then((result) => {
             context.result = result;
             // logger -----------
@@ -63,7 +67,7 @@ module.exports = class job_run {
               __filename,
               name: 'job_run',
               state: '2 context.result',
-              result: context.result
+              'length': context.result.length
             });
             // ------------------
             return context;
@@ -80,7 +84,11 @@ module.exports = class job_run {
           __filename,
           name: 'job_run',
           state: '3 updated_job',
-          updated_job
+          'updated_job.created_at': updated_job.created_at,
+          'updated_job.id': updated_job.id,
+          'updated_job.job_name': updated_job.job_name,
+          'updated_job.jquery_selector': updated_job.jquery_selector,
+          'updated_job.result.length': updated_job.result.length
         });
         // ------------------
 

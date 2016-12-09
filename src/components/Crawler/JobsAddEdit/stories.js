@@ -7,7 +7,6 @@ storiesOf('JobsAddEdit', module)
     <JobsAddEdit
       new_job={{
         job_name: 'Job Name',
-        jquery_selector: 'jquery_selector',
         url: 'http://url',
       }}
     />
