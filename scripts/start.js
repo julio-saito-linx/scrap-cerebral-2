@@ -53,14 +53,14 @@ function setupCompiler(host, port, protocol) {
   // bundle, so if you refresh, it'll wait instead of serving the old one.
   // "invalid" is short for "bundle invalidated", it doesn't imply any errors.
   compiler.plugin('invalid', function() {
-    clearConsole();
+    // clearConsole();
     console.log('Compiling...');
   });
 
   // "done" event fires when Webpack has finished recompiling the bundle.
   // Whether or not you have warnings or errors, you will get this event.
   compiler.plugin('done', function(stats) {
-    clearConsole();
+    // clearConsole();
 
     // We have switched off the default Webpack output in WebpackDevServer
     // options so we are going to "massage" the warnings and errors and present
@@ -233,7 +233,7 @@ function runDevServer(host, port, protocol) {
       return console.log(err);
     }
 
-    clearConsole();
+    // clearConsole();
     console.log(chalk.cyan('Starting the development server...'));
     console.log();
     // openBrowser(protocol + '://' + host + ':' + port + '/');
@@ -255,7 +255,7 @@ detect(DEFAULT_PORT).then(port => {
     return;
   }
 
-  clearConsole();
+  // clearConsole();
   const question =
   chalk.yellow('Something is already running on port ' + DEFAULT_PORT + '.') +
   '\n\nWould you like to run the app on another port instead?';
